@@ -7,7 +7,7 @@ redirects = []
 [functions."*"]
 
 [build]
-publish = "D:\\Antigravity\\20@erasomlabs\\coolstuff.store"
+publish = "D:\\Antigravity\\erasomlabs\\coolstuff.store"
 publishOrigin = "config"
 
 [build.environment]
