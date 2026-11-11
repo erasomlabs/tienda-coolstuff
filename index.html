@@ -3,47 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Coolstuff | Tienda de Afiliados</title>
+    <title>Tienda CoolStuff | Descubre, compra, repite</title>
+    <meta name="description" content="Tienda CoolStuff — Estudio de Descubrimiento y Curaduría de Ingenio. Productos únicos con diseño y función. Hay más de lo que ves. Descubre, compra, repite.">
+    <meta property="og:title" content="Tienda CoolStuff | Descubre, compra, repite">
+    <meta property="og:description" content="Estudio de Descubrimiento y Curaduría de Ingenio. Productos únicos con diseño y función. Hay más de lo que ves.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://coolstuff-store.netlify.app">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            theme: { extend: { colors: { charcoal: '#1E2229', terracotta: '#C86D51', sand: '#F7F4F0' } } }
+            theme: {
+                extend: {
+                    colors: {
+                        purple: "#5F27CD",
+                        turquoise: "#12F6D2",
+                        yellow: "#FEEA00",
+                        beige: "#FFF8E1",
+                        charcoal: "#1E2229"
+                    },
+                    fontFamily: {
+                        title: ["Raleway", "sans-serif"],
+                        body: ["Lato", "sans-serif"]
+                    }
+                }
+            }
         }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-sand text-charcoal font-sans antialiased">
-    <header class="bg-charcoal py-12 px-6 text-center text-white">
-        <div class="w-20 h-20 mx-auto rounded-lg bg-terracotta/20 flex items-center justify-center mb-4 border border-terracotta">
+<body class="bg-beige text-charcoal font-body antialiased">
+
+    <header class="bg-purple py-12 px-6 text-center text-white">
+        <div class="w-20 h-20 mx-auto rounded-2xl bg-turquoise/20 flex items-center justify-center mb-4 border-2 border-turquoise">
             <span class="text-4xl">🛒</span>
         </div>
-        <h1 class="text-3xl font-bold text-terracotta">Tienda Coolstuff</h1>
-        <p class="font-medium mt-1 opacity-90">Tienda de afiliados</p>
-        <p class="max-w-xl mx-auto mt-3 text-sm opacity-80">Productos seleccionados de diferentes proveedores. Modelo de comisión por promoción. Sin inventario ni gestión de envíos.</p>
+        <h1 class="text-3xl md:text-4xl font-title font-bold text-yellow">Tienda CoolStuff</h1>
+        <p class="font-title font-semibold mt-1 text-turquoise">Descubre, compra, repite</p>
+        <p class="max-w-xl mx-auto mt-3 text-sm text-white/80">Estudio de Descubrimiento y Curaduría de Ingenio. Productos únicos donde el ingenio, el diseño y la función se encuentran. Hay más de lo que ves.</p>
     </header>
+
     <main class="max-w-4xl mx-auto px-6 py-10">
+
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
-            <h3 class="text-lg font-bold text-charcoal mb-3">¿Cómo funciona?</h3>
+            <h3 class="text-lg font-title font-bold text-purple mb-3">¿Cómo funciona?</h3>
             <div class="grid md:grid-cols-3 gap-4 text-center">
-                <div><div class="text-3xl mb-2">🔍</div><p class="text-sm font-semibold">Explora productos</p><p class="text-xs text-gray-500">De diferentes proveedores</p></div>
-                <div><div class="text-3xl mb-2">🔗</div><p class="text-sm font-semibold">Haz clic en comprar</p><p class="text-xs text-gray-500">Redirige al proveedor</p></div>
-                <div><div class="text-3xl mb-2">💰</div><p class="text-sm font-semibold">Recibe comisión</p><p class="text-xs text-gray-500">Por cada venta generada</p></div>
+                <div>
+                    <div class="text-3xl mb-2">🔍</div>
+                    <p class="text-sm font-semibold text-charcoal">Explora productos</p>
+                    <p class="text-xs text-gray-500">Selección experta de ingenio</p>
+                </div>
+                <div>
+                    <div class="text-3xl mb-2">🔗</div>
+                    <p class="text-sm font-semibold text-charcoal">Haz clic en comprar</p>
+                    <p class="text-xs text-gray-500">Redirige al proveedor</p>
+                </div>
+                <div>
+                    <div class="text-3xl mb-2">💰</div>
+                    <p class="text-sm font-semibold text-charcoal">Recibe comisión</p>
+                    <p class="text-xs text-gray-500">Por cada venta generada</p>
+                </div>
             </div>
         </div>
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <h3 class="text-lg font-bold text-charcoal mb-3">Proveedores recomendados</h3>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
+            <h3 class="text-lg font-title font-bold text-purple mb-3">Productos destacados</h3>
+            <p class="text-sm text-gray-600 mb-4">Gadgets tecnológicos, accesorios novedosos y artículos de diseño para el hogar y la oficina.</p>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                <div class="text-center p-3 bg-gray-50 rounded-lg"><p class="text-sm font-semibold">Amazon</p><p class="text-xs text-gray-500">1-10% comisión</p></div>
-                <div class="text-center p-3 bg-gray-50 rounded-lg"><p class="text-sm font-semibold">MercadoLibre</p><p class="text-xs text-gray-500">Variable</p></div>
-                <div class="text-center p-3 bg-gray-50 rounded-lg"><p class="text-sm font-semibold">AliExpress</p><p class="text-xs text-gray-500">3-8% comisión</p></div>
+                <div class="text-center p-4 bg-beige rounded-xl border border-purple/10">
+                    <p class="text-sm font-semibold text-charcoal">Localizadores Bluetooth</p>
+                    <p class="text-xs text-gray-500 mt-1">Nunca pierdas tus llaves</p>
+                </div>
+                <div class="text-center p-4 bg-beige rounded-xl border border-purple/10">
+                    <p class="text-sm font-semibold text-charcoal">Botellas inteligentes</p>
+                    <p class="text-xs text-gray-500 mt-1">Hidratación con estilo</p>
+                </div>
+                <div class="text-center p-4 bg-beige rounded-xl border border-purple/10">
+                    <p class="text-sm font-semibold text-charcoal">Cargadores rápidos</p>
+                    <p class="text-xs text-gray-500 mt-1">Energía en segundos</p>
+                </div>
             </div>
         </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <h3 class="text-lg font-title font-bold text-purple mb-3">Proveedores recomendados</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                    <p class="text-sm font-semibold">Amazon</p>
+                    <p class="text-xs text-gray-500">1-10% comisión</p>
+                </div>
+                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                    <p class="text-sm font-semibold">MercadoLibre</p>
+                    <p class="text-xs text-gray-500">Variable</p>
+                </div>
+                <div class="text-center p-3 bg-gray-50 rounded-lg">
+                    <p class="text-sm font-semibold">AliExpress</p>
+                    <p class="text-xs text-gray-500">3-8% comisión</p>
+                </div>
+            </div>
+        </div>
+
         <div class="text-center mt-10">
             <p class="text-gray-500 text-sm mb-4">Disponible en Google Play Store</p>
-            <a href="https://erasomlabs.netlify.app" class="text-terracotta hover:underline text-sm">&larr; Volver a Eraso M Labs</a>
+            <a href="https://erasomlabs.netlify.app" class="text-purple hover:underline text-sm font-semibold">&larr; Volver a Eraso M Labs</a>
         </div>
     </main>
-    <footer class="bg-white border-t border-gray-200 py-6 text-center text-gray-500 text-sm">
-        <p>&copy; 2026 Tienda Coolstuff — Eraso M Labs</p>
+
+    <footer class="bg-charcoal text-white py-6 text-center text-sm">
+        <p class="font-title font-semibold text-yellow">Tienda CoolStuff</p>
+        <p class="text-white/60 mt-1">Hay más de lo que ves · Descubre, compra, repite</p>
+        <p class="text-white/40 text-xs mt-4">&copy; 2026 Tienda CoolStuff — Eraso M Labs</p>
     </footer>
 </body>
 </html>
+" path="D:\Antigravity\erasomlabs\tienda.coolstuff\index.html
