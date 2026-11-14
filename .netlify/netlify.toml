@@ -7,8 +7,10 @@ redirects = []
 [functions."*"]
 
 [build]
-publish = "D:\\Antigravity\\erasomlabs\\coolstuff.store"
+publish = "D:\\Antigravity\\erasomlabs\\coolstuff.store\\.deploy"
 publishOrigin = "config"
+commandOrigin = "config"
+command = "rm -rf .deploy && mkdir -p .deploy && cp index.html .deploy/ && cp -r assets .deploy/"
 
 [build.environment]
 
