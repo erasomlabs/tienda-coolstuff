@@ -29,4 +29,4 @@
 
 ## 6. Skills
 - **senior-frontend:** Para el sitio en Netlify (coolstuff-store.netlify.app) — HTML, CSS, Tailwind, responsive, accesibilidad, SEO, despliegue.
-" path="D:\Antigravity\erasomlabs\tienda.coolstuff\AGENTS.md
+- **web-copywriting:** Para redactar el sitio en inglés, el README, la ficha de Play Store y el microcopy de compra.

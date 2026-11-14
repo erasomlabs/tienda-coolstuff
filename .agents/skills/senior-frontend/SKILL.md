@@ -188,4 +188,3 @@ Before any deployment, verify:
 - ❌ Blocking render with synchronous scripts
 - ❌ No error handling for fetch/API calls
 - ❌ Inaccessible modals/dropdowns
-" path="D:\Antigravity\senior-frontend-skill.md
