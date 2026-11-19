@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tienda Coolstuff | Hay más de lo que parece</title>
-  <meta name="description" content="Veinte objetos útiles para la casa, el trabajo y el día a día. Precios referenciales en COP y compra final en AliExpress. Hay más de lo que parece.">
+  <meta name="description" content="Objetos útiles, elegidos por función. Descubre una selección con descripciones claras y precios de referencia en COP. Hay más de lo que parece.">
   <meta property="og:title" content="Tienda Coolstuff | Hay más de lo que parece">
-  <meta property="og:description" content="Gadgets y objetos útiles, elegidos por función. Precios en COP, enlaces verificados y compra en AliExpress.">
+  <meta property="og:description" content="Una selección de objetos útiles con descripciones claras y precios de referencia en COP.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tienda-coolstuff.netlify.app">
   <meta property="og:image" content="https://tienda-coolstuff.netlify.app/assets/coolstuff_logo.png">
@@ -16,7 +16,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://ae-pic-a1.aliexpress-media.com">
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <script src="assets/filters.js" defer></script>
   <style>
     :root {
       --paper: #e9ebe4;
@@ -25,6 +24,9 @@
       --signal: #f2542d;
       --muted: #5b6675;
       --line: #c5c9be;
+      --coupon-bg: #fff1ea;
+      --coupon-line: #f0b79f;
+      --coupon-ink: #7a2d12;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -73,17 +75,11 @@
     .catalogue { padding: clamp(3.5rem, 8vw, 6rem) 0; }
     .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2rem; }
     .section-head h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; }
-    .section-head p { max-width: 22rem; color: var(--muted); font-size: .9rem; margin: 0; }
+    .section-head p { max-width: 24rem; color: var(--muted); font-size: .9rem; margin: 0; }
 
     .disclosure { border-left: 4px solid var(--signal); background: var(--plate); padding: 1rem 1.25rem; margin: 0 0 2rem; font-size: .88rem; color: var(--ink); }
     .disclosure strong { font-weight: 700; }
     .disclosure a { color: var(--signal); text-underline-offset: .2em; }
-
-    .filters { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.75rem; }
-    .filters button { background: transparent; color: var(--muted); border: 1px solid var(--line); padding: .45rem .9rem; font: inherit; font-size: .82rem; font-weight: 600; }
-    .filters button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-    .filters button:hover { border-color: var(--ink); color: var(--ink); }
-    .filters button[aria-pressed="true"]:hover { color: var(--paper); }
 
     .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
     .plate { background: var(--plate); border-top: 3px solid var(--line); text-decoration: none; display: flex; flex-direction: column; transition: border-color .2s ease; }
@@ -94,23 +90,28 @@
     .plate:hover .plate__img img { transform: scale(1.04); }
     .plate__body { padding: 1.1rem 1.1rem 1.25rem; display: flex; flex-direction: column; flex: 1; }
     .plate__no { font-family: "Space Grotesk", sans-serif; font-size: .75rem; color: var(--signal); font-weight: 700; letter-spacing: .05em; }
-    .plate__cat { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: .6rem 0 0; }
     .plate h3 { font-size: 1.05rem; font-weight: 600; margin: .45rem 0 0; letter-spacing: -0.015em; }
     .plate__desc { font-size: .85rem; color: var(--muted); margin: .6rem 0 1.1rem; }
+    .plate__coupon { display: grid; grid-template-columns: 1fr auto; gap: .1rem .5rem; background: var(--coupon-bg); border: 1px solid var(--coupon-line); color: var(--coupon-ink); padding: .55rem .65rem; margin: -.35rem 0 1rem; font-size: .72rem; line-height: 1.35; }
+    .plate__coupon-code { font-weight: 700; letter-spacing: .03em; overflow-wrap: anywhere; }
+    .plate__coupon-value { font-weight: 700; text-align: right; white-space: nowrap; }
+    .plate__coupon-date { grid-column: 1 / -1; font-weight: 600; }
+    .plate__coupon-min { grid-column: 1 / -1; color: var(--muted); }
     .plate__foot { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; margin-top: auto; border-top: 1px solid var(--line); padding-top: .8rem; }
     .plate__price { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.15rem; }
     .plate__meta { font-size: .72rem; color: var(--muted); text-align: right; }
     .catalogue__note { font-size: .78rem; color: var(--muted); margin: 1.5rem 0 0; }
-    .empty { display: none; padding: 2rem; border: 1px dashed var(--line); color: var(--muted); font-size: .9rem; }
 
     .faq { border-top: 1px solid var(--line); padding: clamp(3.5rem, 8vw, 6rem) 0; }
     .faq .wrap { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: clamp(2rem, 6vw, 5rem); }
     .faq h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
-    .faq dl { margin: 0; }
-    .faq div { border-top: 1px solid var(--line); padding: 1.25rem 0; }
-    .faq div:last-child { border-bottom: 1px solid var(--line); }
-    .faq dt { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 1.1rem; }
-    .faq dd { margin: .5rem 0 0; color: var(--muted); font-size: .95rem; max-width: 38rem; }
+    .faq details { border-top: 1px solid var(--line); padding: 1.1rem 0; }
+    .faq details:last-of-type { border-bottom: 1px solid var(--line); }
+    .faq summary { cursor: pointer; list-style: none; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 1.1rem; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--signal); font-weight: 700; }
+    .faq details[open] summary::after { content: "−"; }
+    .faq details p { margin: .6rem 0 0; color: var(--muted); font-size: .95rem; max-width: 38rem; }
 
     .closing { background: var(--ink); color: var(--paper); padding: clamp(3rem, 7vw, 5rem) 0; }
     .closing .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; }
@@ -139,34 +140,536 @@
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
   </style>
   <script type="application/ld+json" nonce="coolstuff-ld">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Selección Tienda Coolstuff",
-    "url": "https://tienda-coolstuff.netlify.app/#catalogo",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "Proyector Magcubic HY300 Pro 2026", "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sbbd8525df3344acb81a2ddfe23e3fa91J.jpg", "url": "https://tienda-coolstuff.netlify.app/go/proyector-hy300", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "226849", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "Aspiradora de pelo para mascotas 3 en 1", "image": "https://ae-pic-a1.aliexpress-media.com/kf/Saf8852b4b25a4f5680029fd2b7944cefz.jpg", "url": "https://tienda-coolstuff.netlify.app/go/aspiradora-mascotas", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "185052", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "name": "Masajeador de cuello y hombros recargable", "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc9b11f95e3bf40d4934f64f6e70cc8cdE.jpg", "url": "https://tienda-coolstuff.netlify.app/go/masajeador-cuello", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "148355", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "name": "Cámara PTZ WiFi para exteriores", "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc65c39317976476e8f072df544221956G.jpg", "url": "https://tienda-coolstuff.netlify.app/go/camara-ptz", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "80119", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 5, "item": { "@type": "Product", "name": "Cepillo rizador iónico 3 en 1", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S28c20428868c4c8989e4ddde7f82f559w.png", "url": "https://tienda-coolstuff.netlify.app/go/kit-estilizador", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "97208", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 6, "item": { "@type": "Product", "name": "Robot aspirador y fregador inteligente", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S3ee193a305de4f78b6480dfc18b43e2df.png", "url": "https://tienda-coolstuff.netlify.app/go/robot-aspirador", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "196001", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 7, "item": { "@type": "Product", "name": "Peine alisador iónico antiescaldado", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S1271f72afe3e4f2aaff6a819fc0911cdp.jpg", "url": "https://tienda-coolstuff.netlify.app/go/cepillo-alisador", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "56162", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 8, "item": { "@type": "Product", "name": "Aspiradora inalámbrica 120 W para carro", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S70f2ff1fe2264b0380cd98e0a29aa46bT.jpg", "url": "https://tienda-coolstuff.netlify.app/go/aspiradora-carro", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "38344", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 9, "item": { "@type": "Product", "name": "Kit de aseo para mascotas 8 en 1 con secador", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S983bab36205f4c4fa67448af487c85baA.jpg", "url": "https://tienda-coolstuff.netlify.app/go/kit-aseo-mascotas", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "195338", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 10, "item": { "@type": "Product", "name": "Proyector KaiAqua 4K Android 11 HY300", "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sad842b3095ca49d3a9938d929cb50311Y.jpg", "url": "https://tienda-coolstuff.netlify.app/go/proyector-hy300-4k", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "251413", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 11, "item": { "@type": "Product", "name": "Pistola de limpieza a presión inalámbrica", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S78e1cac8fc094d268d6aa4bb5c3bca89z.jpg_480x480q75.jpg", "url": "https://tienda-coolstuff.netlify.app/go/limpieza-presion", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "229000", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 12, "item": { "@type": "Product", "name": "Ventilador portátil de cuello sin aspas", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S181474ba4c434124b0f1ec617bd4f9eeh.jpg_480x480q75.jpg", "url": "https://tienda-coolstuff.netlify.app/go/ventilador-cuello", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "89000", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 13, "item": { "@type": "Product", "name": "Teclado mecánico compacto retroiluminado", "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sab17970e27994a6b8ec94a0a3bae1847v.jpg_480x480q75.jpg", "url": "https://tienda-coolstuff.netlify.app/go/teclado-mecanico", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "159000", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 14, "item": { "@type": "Product", "name": "Lámpara de escritorio LED regulable", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S804b975fde1a45a287d6b1e20b7ddaffC.jpg_480x480q75.jpg", "url": "https://tienda-coolstuff.netlify.app/go/lampara-escritorio", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "79000", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 15, "item": { "@type": "Product", "name": "Reloj inteligente con monitor de actividad", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S3d00dd491292421cbbedc383b1b0be39L.jpg_480x480q75.jpg", "url": "https://tienda-coolstuff.netlify.app/go/reloj-inteligente", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "119000", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 16, "item": { "@type": "Product", "name": "Soporte magnético para teléfono", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S45375edaf9424d4593fd0d8ef36e177ft.jpg_480x480q75.jpg", "url": "https://tienda-coolstuff.netlify.app/go/soporte-movil", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "45000", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 17, "item": { "@type": "Product", "name": "Pelador eléctrico automático de frutas y verduras", "image": "https://ae-pic-a1.aliexpress-media.com/kf/Ac8d0934d22e44e65a48926f24b1a74682.jpg_480x480q75.jpg", "url": "https://tienda-coolstuff.netlify.app/go/pelador-electrico", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "139000", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 18, "item": { "@type": "Product", "name": "Limpiador ultrasónico de joyas y gafas", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S634b11946b8f4d5e819064a44775cc94A.jpg_480x480q75.jpg", "url": "https://tienda-coolstuff.netlify.app/go/limpiador-joyas", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "99000", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 19, "item": { "@type": "Product", "name": "Filtro de ducha con cartucho reemplazable", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S3975b3145d7e4f4eb473602f048ea8aeV.jpg_480x480q75.jpg", "url": "https://tienda-coolstuff.netlify.app/go/filtro-ducha", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "69000", "availability": "https://schema.org/InStock" } } },
-      { "@type": "ListItem", "position": 20, "item": { "@type": "Product", "name": "Cargador inalámbrico magnético para auto", "image": "https://ae-pic-a1.aliexpress-media.com/kf/S7a17dbb0a2274eab927b310550ac7cc1B.jpg_480x480q75.jpg", "url": "https://tienda-coolstuff.netlify.app/go/cargador-auto", "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "79000", "availability": "https://schema.org/InStock" } } }
-    ]
-  }
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Selección Tienda Coolstuff",
+  "url": "https://tienda-coolstuff.netlify.app/#catalogo",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "name": "Soporte con ventosa para cámara",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sae89bf9dae8d46bcb61581aad036df24y.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/soporte-camara-ventosa",
+        "sku": "1005010196417486",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "152513.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/soporte-camara-ventosa"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "name": "Proyector BYINTEK LOVE 2",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sf758f9b44ab947e491c6a1c2485c382a6.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/proyector-byintek-love2",
+        "sku": "1005007251573239",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "857400.35",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/proyector-byintek-love2"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "Audífonos UGREEN Max5s ANC",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S727012b8075748e48e05f51e4ad4ae2cN.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/audifonos-ugreen-max5s",
+        "sku": "1005012596131779",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "177080.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/audifonos-ugreen-max5s"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Product",
+        "name": "Empuñadura de manillar para ATV",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/H0afec9aa1a7c48ffab9233af12e9166be.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/empunadura-manillar-atv",
+        "sku": "1005003744119463",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "23180.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/empunadura-manillar-atv"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Product",
+        "name": "Consola Anbernic RG Rotate",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S9ea40bb571ba4a219359375f760e41110.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/consola-anbernic-rg-rotate",
+        "sku": "1005012233611880",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "342687.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/consola-anbernic-rg-rotate"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Product",
+        "name": "Set de 4 tapacubos 56 mm",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sf7b1ef8cd4fc4dcda510cb372f4f338ch.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/tapacubos-nissan-56mm",
+        "sku": "1005009133623269",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "16590.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/tapacubos-nissan-56mm"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Product",
+        "name": "Culotte ciclismo DAREVIE Winter",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S8fe0c426a6ae43f0ad19cffe820c0523t.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/culotte-darevie-winter",
+        "sku": "1005004870417481",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "147846.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/culotte-darevie-winter"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "Product",
+        "name": "Cámara PTZ Lenovo 4K 8MP",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S46c5464fcea74a6e8329a0af5f5973570.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/camara-ptz-lenovo-4k",
+        "sku": "1005007435853162",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "146176.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/camara-ptz-lenovo-4k"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "Product",
+        "name": "Chaqueta ciclismo DAREVIE",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S1da095e3e01947a082d2c1fe9a2160faD.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/chaqueta-ciclismo-darevie",
+        "sku": "1005007868473890",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "136489.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/chaqueta-ciclismo-darevie"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+        "@type": "Product",
+        "name": "Filtro K&F Concept 3 en 1",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S3357e82c5fb24cc1945f9c4fb0f75bcaS.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/filtro-kf-concept-3en1",
+        "sku": "1005008889073423",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "99057.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/filtro-kf-concept-3en1"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "Product",
+        "name": "Carrete de pipa 27 cm",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sbf8ef5b306b846f997eb7f11231cfc12H.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/carrete-kite-27cm",
+        "sku": "1005005519819354",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "43844.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/carrete-kite-27cm"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "Product",
+        "name": "Auriculares óseos ZNP E12",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5f273e40d33b4e9fa59e657a17dba548A.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/auriculares-conduccion-osea-znp",
+        "sku": "1005013213361160",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "135328.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/auriculares-conduccion-osea-znp"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "Product",
+        "name": "Emblemas Turbo para Mercedes",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S82cc5f4659454e3e8678077d86038973d.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/emblema-turbo-mercedes",
+        "sku": "1005008834353480",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "20403.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/emblema-turbo-mercedes"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "item": {
+        "@type": "Product",
+        "name": "Irrigador bucal Dr.Yadent YD06",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S6e7e7e0ab11f40e79e526fb0923b8ac6f.png",
+        "url": "https://tienda-coolstuff.netlify.app/go/irrigador-bucal-dr-yadent",
+        "sku": "1005008756126002",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "80707.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/irrigador-bucal-dr-yadent"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "item": {
+        "@type": "Product",
+        "name": "Cámara web UGREEN 4K",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc5531cfe0d744f76bd22374739da5c32p.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/camara-web-ugreen-4k",
+        "sku": "1005009234854371",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "88746.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/camara-web-ugreen-4k"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
+      "item": {
+        "@type": "Product",
+        "name": "Control MOBAPAD M12",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S07f5e57fdd2d44eba22ec9cf24eb1f57A.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/control-mobapad-m12",
+        "sku": "1005012274985846",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "213686.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/control-mobapad-m12"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 17,
+      "item": {
+        "@type": "Product",
+        "name": "Reloj de pared 3D ROKR",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc6094c8fa9524125b8450d399c21d6d4e.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/kit-pared-cuco-navidad",
+        "sku": "1005013407548745",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "204866.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/kit-pared-cuco-navidad"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 18,
+      "item": {
+        "@type": "Product",
+        "name": "Reloj NORTH EDGE TRITON-TI",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S83f92b0f022845b29adbed107b9b8f3bD.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/reloj-buceo-north-edge",
+        "sku": "1005010311057919",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "168145.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/reloj-buceo-north-edge"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "item": {
+        "@type": "Product",
+        "name": "Protector bucal de boxeo",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S63e8804b0a5b4510b8a1b1cc5e38f952a.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/protector-bucal-boxeo",
+        "sku": "1005005254868305",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "9189.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/protector-bucal-boxeo"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
+      "item": {
+        "@type": "Product",
+        "name": "Miniaturas Ferrari 1:64",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5039ecb6f10749d880cc3a54968baa09C.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/miniaturas-ferrari-1-64",
+        "sku": "1005012832033342",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "25356.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/miniaturas-ferrari-1-64"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 21,
+      "item": {
+        "@type": "Product",
+        "name": "Bañador competición piel de tiburón",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/HTB14VfiXOzxK1Rjy1zkq6yHrVXa1.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/baniador-piel-tiburon",
+        "sku": "32952593614",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "33091.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/baniador-piel-tiburon"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 22,
+      "item": {
+        "@type": "Product",
+        "name": "Shorts ciclismo DAREVIE",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S215cb1f5b36b403a83f928495242d51eP.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/shorts-ciclismo-darevie",
+        "sku": "1005012468074243",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "193907.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/shorts-ciclismo-darevie"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 23,
+      "item": {
+        "@type": "Product",
+        "name": "Pantalón ciclismo MTB 9D",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sf47327aa2c5f491f8c195b8ca44496fco.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/pantalon-ciclismo-mtb-9d",
+        "sku": "1005011924286425",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "26115.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/pantalon-ciclismo-mtb-9d"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 24,
+      "item": {
+        "@type": "Product",
+        "name": "Camiseta vintage Saint Michael",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sc450e675bc9541f98e915563d77a4482s.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/camiseta-vintage-saint-michael",
+        "sku": "1005007778481987",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "113284.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/camiseta-vintage-saint-michael"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 25,
+      "item": {
+        "@type": "Product",
+        "name": "Controlador 8BitDo N64",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S93bb9345429343ae8e11ae73a47e5200P.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/controlador-8bitdo-n64",
+        "sku": "1005009628375620",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "122467.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/controlador-8bitdo-n64"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 26,
+      "item": {
+        "@type": "Product",
+        "name": "Proyector BYINTEK U4 Love 1",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S1a295fa0223a4d258aaf5d4120ec9dbcX.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/proyector-byintek-u4",
+        "sku": "1005006965436436",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "428110.79",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/proyector-byintek-u4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 27,
+      "item": {
+        "@type": "Product",
+        "name": "Camiseta deportiva sin mangas",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/S4d7eb3a93f994534ace32896099caac5r.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/camiseta-deportiva-verano",
+        "sku": "1005011908590387",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "25909.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/camiseta-deportiva-verano"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 28,
+      "item": {
+        "@type": "Product",
+        "name": "Uniforme de portero Shinestone",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/H5d97919f1a974382b4276d540f20627ep.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/uniforme-portero-shinestone",
+        "sku": "32962504136",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "25803.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/uniforme-portero-shinestone"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 29,
+      "item": {
+        "@type": "Product",
+        "name": "Cubierta líquido de frenos Yamaha",
+        "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sf043d17327ea4e8b996b7ebabd581330l.jpg",
+        "url": "https://tienda-coolstuff.netlify.app/go/cubierta-liquido-frenos-yamaha",
+        "sku": "1005005859996858",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "COP",
+          "price": "26898.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tienda-coolstuff.netlify.app/go/cubierta-liquido-frenos-yamaha"
+        }
+      }
+    }
+  ]
+}
   </script>
 </head>
 <body>
@@ -177,9 +680,9 @@
       <nav class="nav" aria-label="Navegación principal">
         <a href="#catalogo">Catálogo</a>
         <a href="#preguntas">Preguntas</a>
-        <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer">Contacto</a>
+        <a href="https://m.me/tienda.coolstuff" target="_blank" rel="noopener noreferrer">Contacto</a>
       </nav>
-      <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="btn">Messenger</a>
+      <a href="https://m.me/tienda.coolstuff" target="_blank" rel="noopener noreferrer" class="btn">Messenger</a>
     </div>
   </header>
 
@@ -190,8 +693,8 @@
         <h1>Tienda<br><em>Coolstuff.</em></h1>
         <p class="lede">Objetos donde la ingeniería, el diseño y la utilidad se encuentran. Cada elección tiene una razón: funciona mejor que la alternativa obvia.</p>
         <div class="hero__actions">
-          <a href="#catalogo" class="btn">Ver los 20 elegidos</a>
-          <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">Hacer una pregunta</a>
+          <a href="#catalogo" class="btn">Ver el catálogo</a>
+          <a href="https://m.me/tienda.coolstuff" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">Hacer una pregunta</a>
         </div>
       </div>
       <div class="hero__stamp">
@@ -204,9 +707,9 @@
   <div class="trust">
     <div class="wrap">
       <ul>
-        <li>Precios referenciales en COP</li>
-        <li>Enlaces verificados</li>
-        <li>Compra final en AliExpress</li>
+        <li>Selección con criterio</li>
+        <li>Descripciones claras</li>
+        <li>Precios de referencia</li>
         <li>Dudas respondidas por una persona</li>
       </ul>
     </div>
@@ -219,137 +722,271 @@
           <p class="eyebrow">Selección actual</p>
           <h2>Descubre.<br>Elige. Prueba.</h2>
         </div>
-        <p>Veinte objetos elegidos por función primero. Precios referenciales en COP; el precio final, el envío y las devoluciones los define AliExpress.</p>
+        <p>Objetos elegidos por función primero. Cada ficha muestra lo esencial para decidir.</p>
       </div>
 
       <aside class="disclosure" aria-label="Aviso de afiliados">
-        <strong>Aviso de afiliados:</strong> los enlaces de este catálogo llevan a AliExpress. Si compras desde ellos, Tienda Coolstuff puede recibir una comisión sin costo adicional para ti. <a href="#preguntas">Cómo funciona</a>.
+        <strong>Aviso de afiliados:</strong> este catálogo está vinculado a AliExpress.
       </aside>
 
-      <nav class="filters" aria-label="Filtrar productos por categoría">
-        <button type="button" data-filter="todo" aria-pressed="true">Todos</button>
-        <button type="button" data-filter="hogar" aria-pressed="false">Hogar</button>
-        <button type="button" data-filter="tecnologia" aria-pressed="false">Tecnología</button>
-        <button type="button" data-filter="cocina" aria-pressed="false">Cocina</button>
-        <button type="button" data-filter="bienestar" aria-pressed="false">Bienestar</button>
-        <button type="button" data-filter="mascotas" aria-pressed="false">Mascotas</button>
-        <button type="button" data-filter="belleza" aria-pressed="false">Belleza</button>
-        <button type="button" data-filter="seguridad" aria-pressed="false">Seguridad</button>
-        <button type="button" data-filter="auto" aria-pressed="false">Auto</button>
-      </nav>
 
       <div class="grid" id="product-grid">
-        <a href="/go/proyector-hy300" data-category="tecnologia" class="plate" rel="sponsored nofollow" aria-label="Ver Proyector Magcubic HY300 Pro en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sbbd8525df3344acb81a2ddfe23e3fa91J.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Proyector Magcubic HY300 Pro 2026"></div>
-          <div class="plate__body"><span class="plate__no">01 / 20</span><p class="plate__cat">Cine en casa</p><h3>Proyector Magcubic HY300 Pro 2026</h3><p class="plate__desc">Corrección trapezoidal automática y rotación de 180°. Cine portátil sin montaje.</p><div class="plate__foot"><span class="plate__price">$226.849</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/soporte-camara-ventosa" class="plate" rel="sponsored nofollow" aria-label="Ver Soporte con ventosa para cámara en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sae89bf9dae8d46bcb61581aad036df24y.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Soporte con ventosa y brazo articulado para cámara de acción"></div>
+          <div class="plate__body"><span class="plate__no">01</span><h3>Soporte con ventosa para cámara</h3><p class="plate__desc">Brazo mágico con cabeza de bola para fijar action cameras a superficies lisas.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón AOE0V1</span>
+            <span class="plate__coupon-value">−3.597,84</span>
+            <span class="plate__coupon-date">Vigente hasta 30 nov 2026</span>
+            <span class="plate__coupon-min">Mínimo 3.602,98 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$152.513</span><span class="plate__meta">50% dcto. · 483 ventas</span></div></div>
         </a>
-        <a href="/go/aspiradora-mascotas" data-category="mascotas" class="plate" rel="sponsored nofollow" aria-label="Ver Aspiradora de pelo para mascotas en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Saf8852b4b25a4f5680029fd2b7944cefz.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Aspiradora de pelo para mascotas 3 en 1"></div>
-          <div class="plate__body"><span class="plate__no">02 / 20</span><p class="plate__cat">Mascotas</p><h3>Aspiradora de pelo para mascotas 3 en 1</h3><p class="plate__desc">Cepillo eléctrico con succión y soplado para quitar el pelo de sofás y ropa.</p><div class="plate__foot"><span class="plate__price">$185.052</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/proyector-byintek-love2" class="plate" rel="sponsored nofollow" aria-label="Ver Proyector BYINTEK LOVE 2 en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sf758f9b44ab947e491c6a1c2485c382a6.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Proyector inteligente BYINTEK LOVE 2 en funcionamiento"></div>
+          <div class="plate__body"><span class="plate__no">02</span><h3>Proyector BYINTEK LOVE 2</h3><p class="plate__desc">Full HD 1080p con enfoque automático, Android 9.0, WiFi 5G y Bluetooth.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón U6BRMARCUS</span>
+            <span class="plate__coupon-value">−171.329,30</span>
+            <span class="plate__coupon-date">Vigente hasta 31 dic 2026</span>
+            <span class="plate__coupon-min">Mínimo 582.519,62 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$857.400,35</span><span class="plate__meta">42% dcto. · 240 ventas</span></div></div>
         </a>
-        <a href="/go/masajeador-cuello" data-category="bienestar" class="plate" rel="sponsored nofollow" aria-label="Ver Masajeador de cuello y hombros en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sc9b11f95e3bf40d4934f64f6e70cc8cdE.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Masajeador de cuello y hombros recargable"></div>
-          <div class="plate__body"><span class="plate__no">03 / 20</span><p class="plate__cat">Bienestar</p><h3>Masajeador de cuello y hombros recargable</h3><p class="plate__desc">Masaje de tejido profundo con batería USB. Para después de horas frente al computador.</p><div class="plate__foot"><span class="plate__price">$148.355</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/audifonos-ugreen-max5s" class="plate" rel="sponsored nofollow" aria-label="Ver Audífonos UGREEN Max5s ANC en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S727012b8075748e48e05f51e4ad4ae2cN.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Audífonos inalámbricos UGREEN Max5s con cancelación de ruido"></div>
+          <div class="plate__body"><span class="plate__no">03</span><h3>Audífonos UGREEN Max5s ANC</h3><p class="plate__desc">Cancelación de ruido híbrida de 45 dB y hasta 112 horas de reproducción.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón DLIMSHAVIM2A</span>
+            <span class="plate__coupon-value">−20.559,52</span>
+            <span class="plate__coupon-date">Vigente hasta 13 dic 2026</span>
+            <span class="plate__coupon-min">Mínimo 102.797,58 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$177.080</span><span class="plate__meta">19% dcto. · 643 ventas</span></div></div>
         </a>
-        <a href="/go/camara-ptz" data-category="seguridad" class="plate" rel="sponsored nofollow" aria-label="Ver Cámara PTZ WiFi para exteriores en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sc65c39317976476e8f072df544221956G.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Cámara PTZ WiFi para exteriores"></div>
-          <div class="plate__body"><span class="plate__no">04 / 20</span><p class="plate__cat">Seguridad</p><h3>Cámara PTZ WiFi para exteriores</h3><p class="plate__desc">Seguimiento automático, visión nocturna y audio bidireccional desde el celular.</p><div class="plate__foot"><span class="plate__price">$80.119</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/empunadura-manillar-atv" class="plate" rel="sponsored nofollow" aria-label="Ver Empuñadura de manillar para ATV en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/H0afec9aa1a7c48ffab9233af12e9166be.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Empuñadura de gel para manillar de motocicleta"></div>
+          <div class="plate__body"><span class="plate__no">04</span><h3>Empuñadura de manillar para ATV</h3><p class="plate__desc">Agarre de gel para motocross y pit bike; compatible con manillares de 22 y 24 mm.</p><div class="plate__foot"><span class="plate__price">$23.180</span><span class="plate__meta">16% dcto. · 243 ventas</span></div></div>
         </a>
-        <a href="/go/kit-estilizador" data-category="belleza" class="plate" rel="sponsored nofollow" aria-label="Ver Cepillo rizador iónico 3 en 1 en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S28c20428868c4c8989e4ddde7f82f559w.png" width="480" height="480" loading="lazy" decoding="async" alt="Cepillo rizador iónico 3 en 1"></div>
-          <div class="plate__body"><span class="plate__no">05 / 20</span><p class="plate__cat">Belleza</p><h3>Cepillo rizador iónico 3 en 1</h3><p class="plate__desc">Riza, alisa y peina con calor regulado y iones negativos.</p><div class="plate__foot"><span class="plate__price">$97.208</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/consola-anbernic-rg-rotate" class="plate" rel="sponsored nofollow" aria-label="Ver Consola Anbernic RG Rotate en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S9ea40bb571ba4a219359375f760e41110.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Consola portátil Anbernic RG Rotate con pantalla IPS"></div>
+          <div class="plate__body"><span class="plate__no">05</span><h3>Consola Anbernic RG Rotate</h3><p class="plate__desc">Emuladora portátil con Android 12, chip T618, pantalla IPS y WiFi.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón QF1LIG9JHEYN</span>
+            <span class="plate__coupon-value">−3.426,59</span>
+            <span class="plate__coupon-date">Vigente hasta 29 nov 2026</span>
+            <span class="plate__coupon-min">Mínimo 34.265,86 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$342.687</span><span class="plate__meta">38% dcto. · 1451 ventas</span></div></div>
         </a>
-        <a href="/go/robot-aspirador" data-category="hogar" class="plate" rel="sponsored nofollow" aria-label="Ver Robot aspirador y fregador inteligente en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S3ee193a305de4f78b6480dfc18b43e2df.png" width="480" height="480" loading="lazy" decoding="async" alt="Robot aspirador y fregador inteligente"></div>
-          <div class="plate__body"><span class="plate__no">06 / 20</span><p class="plate__cat">Hogar</p><h3>Robot aspirador y fregador inteligente</h3><p class="plate__desc">Aspira y friega con pulverizador. Recargable y programable desde la app.</p><div class="plate__foot"><span class="plate__price">$196.001</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/tapacubos-nissan-56mm" class="plate" rel="sponsored nofollow" aria-label="Ver Set de 4 tapacubos 56 mm en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sf7b1ef8cd4fc4dcda510cb372f4f338ch.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Juego de cuatro tapacubos de 56 mm con emblema"></div>
+          <div class="plate__body"><span class="plate__no">06</span><h3>Set de 4 tapacubos 56 mm</h3><p class="plate__desc">Centros de rueda con emblema para Nissan; cubren la llanta y mejoran el acabado.</p><div class="plate__foot"><span class="plate__price">$16.590</span><span class="plate__meta">17% dcto. · 121 ventas</span></div></div>
         </a>
-        <a href="/go/cepillo-alisador" data-category="belleza" class="plate" rel="sponsored nofollow" aria-label="Ver Peine alisador iónico en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S1271f72afe3e4f2aaff6a819fc0911cdp.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Peine alisador iónico antiescaldado"></div>
-          <div class="plate__body"><span class="plate__no">07 / 20</span><p class="plate__cat">Belleza</p><h3>Peine alisador iónico antiescaldado</h3><p class="plate__desc">Cabello liso en minutos, en seco o húmedo, con diseño antiescaldado.</p><div class="plate__foot"><span class="plate__price">$56.162</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/culotte-darevie-winter" class="plate" rel="sponsored nofollow" aria-label="Ver Culotte ciclismo DAREVIE Winter en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S8fe0c426a6ae43f0ad19cffe820c0523t.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Culotte de ciclismo térmico DAREVIE Winter"></div>
+          <div class="plate__body"><span class="plate__no">07</span><h3>Culotte ciclismo DAREVIE Winter</h3><p class="plate__desc">Impermeable, con forro térmico y almohadilla de gel para salidas frías.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón DAREVIE26011</span>
+            <span class="plate__coupon-value">−7.195,69</span>
+            <span class="plate__coupon-date">Vigente hasta 18 dic 2026</span>
+            <span class="plate__coupon-min">Mínimo 107.935,32 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$147.846</span><span class="plate__meta">15% dcto. · 426 ventas</span></div></div>
         </a>
-        <a href="/go/aspiradora-carro" data-category="auto" class="plate" rel="sponsored nofollow" aria-label="Ver Aspiradora inalámbrica para carro en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S70f2ff1fe2264b0380cd98e0a29aa46bT.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Aspiradora inalámbrica 120 W para carro"></div>
-          <div class="plate__body"><span class="plate__no">08 / 20</span><p class="plate__cat">Auto</p><h3>Aspiradora inalámbrica 120 W para carro</h3><p class="plate__desc">Portátil, sin cable y con boquillas para llegar a los rincones.</p><div class="plate__foot"><span class="plate__price">$38.344</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/camara-ptz-lenovo-4k" class="plate" rel="sponsored nofollow" aria-label="Ver Cámara PTZ Lenovo 4K 8MP en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S46c5464fcea74a6e8329a0af5f5973570.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Cámara de seguridad PTZ Lenovo 4K para exteriores"></div>
+          <div class="plate__body"><span class="plate__no">08</span><h3>Cámara PTZ Lenovo 4K 8MP</h3><p class="plate__desc">Doble lente, visión nocturna, IP66, seguimiento por IA y audio bidireccional.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón BABLGINA2U39</span>
+            <span class="plate__coupon-value">−10.279,76</span>
+            <span class="plate__coupon-date">Vigente hasta 18 dic 2026</span>
+            <span class="plate__coupon-min">Mínimo 10.314,02 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$146.176</span><span class="plate__meta">18% dcto. · 587 ventas</span></div></div>
         </a>
-        <a href="/go/kit-aseo-mascotas" data-category="mascotas" class="plate" rel="sponsored nofollow" aria-label="Ver Kit de aseo para mascotas 8 en 1 en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S983bab36205f4c4fa67448af487c85baA.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Kit de aseo para mascotas 8 en 1 con secador"></div>
-          <div class="plate__body"><span class="plate__no">09 / 20</span><p class="plate__cat">Mascotas</p><h3>Kit de aseo para mascotas 8 en 1 con secador</h3><p class="plate__desc">Aspira, corta, cepilla y seca con una sola herramienta.</p><div class="plate__foot"><span class="plate__price">$195.338</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/chaqueta-ciclismo-darevie" class="plate" rel="sponsored nofollow" aria-label="Ver Chaqueta ciclismo DAREVIE en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S1da095e3e01947a082d2c1fe9a2160faD.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Chaqueta de ciclismo DAREVIE cortavientos"></div>
+          <div class="plate__body"><span class="plate__no">09</span><h3>Chaqueta ciclismo DAREVIE</h3><p class="plate__desc">Cortavientos térmico, suave y transpirable para entrenamiento en frío.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón DAREVIE26011</span>
+            <span class="plate__coupon-value">−7.195,69</span>
+            <span class="plate__coupon-date">Vigente hasta 18 dic 2026</span>
+            <span class="plate__coupon-min">Mínimo 107.935,32 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$136.489</span><span class="plate__meta">16% dcto. · 1133 ventas</span></div></div>
         </a>
-        <a href="/go/proyector-hy300-4k" data-category="tecnologia" class="plate" rel="sponsored nofollow" aria-label="Ver Proyector KaiAqua 4K Android 11 en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sad842b3095ca49d3a9938d929cb50311Y.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Proyector KaiAqua 4K Android 11 HY300"></div>
-          <div class="plate__body"><span class="plate__no">10 / 20</span><p class="plate__cat">Cine en casa</p><h3>Proyector KaiAqua 4K Android 11 HY300</h3><p class="plate__desc">WiFi 6, Bluetooth 5.0 y 290 ANSI para una sala de cine en casa.</p><div class="plate__foot"><span class="plate__price">$251.413</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/filtro-kf-concept-3en1" class="plate" rel="sponsored nofollow" aria-label="Ver Filtro K&amp;F Concept 3 en 1 en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S3357e82c5fb24cc1945f9c4fb0f75bcaS.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Filtro de cámara K&amp;F Concept 3 en 1"></div>
+          <div class="plate__body"><span class="plate__no">10</span><h3>Filtro K&amp;F Concept 3 en 1</h3><p class="plate__desc">ND, CPL y difusión negra en un filtro de 67 mm con adaptadores.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón 0VRYQ7N22UG5</span>
+            <span class="plate__coupon-value">−10.793,53</span>
+            <span class="plate__coupon-date">Vigente hasta 30 nov 2026</span>
+            <span class="plate__coupon-min">Mínimo 104.337,47 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$99.057</span><span class="plate__meta">48% dcto. · 928 ventas</span></div></div>
         </a>
-        <a href="/go/limpieza-presion" data-category="hogar" class="plate" rel="sponsored nofollow" aria-label="Ver Pistola de limpieza a presión inalámbrica en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S78e1cac8fc094d268d6aa4bb5c3bca89z.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Pistola de limpieza a presión inalámbrica"></div>
-          <div class="plate__body"><span class="plate__no">11 / 20</span><p class="plate__cat">Limpieza</p><h3>Pistola de limpieza a presión inalámbrica</h3><p class="plate__desc">Compacta y sin cable. Para patios, vehículos y superficies difíciles.</p><div class="plate__foot"><span class="plate__price">$229.000</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/carrete-kite-27cm" class="plate" rel="sponsored nofollow" aria-label="Ver Carrete de pipa 27 cm en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sbf8ef5b306b846f997eb7f11231cfc12H.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Carrete de cometa de 27 cm con hilo Kevlar"></div>
+          <div class="plate__body"><span class="plate__no">11</span><h3>Carrete de pipa 27 cm</h3><p class="plate__desc">Carrete ABS con hilo Kevlar para vuelo de cometas y actividades al aire libre.</p><div class="plate__foot"><span class="plate__price">$43.844</span><span class="plate__meta">14% dcto. · 46 ventas</span></div></div>
         </a>
-        <a href="/go/ventilador-cuello" data-category="bienestar" class="plate" rel="sponsored nofollow" aria-label="Ver Ventilador portátil de cuello sin aspas en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S181474ba4c434124b0f1ec617bd4f9eeh.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Ventilador portátil de cuello sin aspas"></div>
-          <div class="plate__body"><span class="plate__no">12 / 20</span><p class="plate__cat">Bienestar</p><h3>Ventilador portátil de cuello sin aspas</h3><p class="plate__desc">Flujo de aire constante y manos libres. Se carga por USB-C.</p><div class="plate__foot"><span class="plate__price">$89.000</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/auriculares-conduccion-osea-znp" class="plate" rel="sponsored nofollow" aria-label="Ver Auriculares óseos ZNP E12 en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S5f273e40d33b4e9fa59e657a17dba548A.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Auriculares de conducción ósea ZNP E12"></div>
+          <div class="plate__body"><span class="plate__no">12</span><h3>Auriculares óseos ZNP E12</h3><p class="plate__desc">Diseño abierto, Bluetooth 6.0, cámara 8 MP, EIS y resistencia IPX5.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón LV6WVV6WZV3M</span>
+            <span class="plate__coupon-value">−3.083,87</span>
+            <span class="plate__coupon-date">Vigente hasta 30 jun 2027</span>
+            <span class="plate__coupon-min">Mínimo 51.397,77 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$135.328</span><span class="plate__meta">28% dcto. · 224 ventas</span></div></div>
         </a>
-        <a href="/go/teclado-mecanico" data-category="tecnologia" class="plate" rel="sponsored nofollow" aria-label="Ver Teclado mecánico compacto retroiluminado en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sab17970e27994a6b8ec94a0a3bae1847v.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Teclado mecánico compacto retroiluminado"></div>
-          <div class="plate__body"><span class="plate__no">13 / 20</span><p class="plate__cat">Tecnología</p><h3>Teclado mecánico compacto retroiluminado</h3><p class="plate__desc">Respuesta táctil, tamaño reducido y luz para trabajar de noche.</p><div class="plate__foot"><span class="plate__price">$159.000</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/emblema-turbo-mercedes" class="plate" rel="sponsored nofollow" aria-label="Ver Emblemas Turbo para Mercedes en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S82cc5f4659454e3e8678077d86038973d.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Par de emblemas Turbo para guardabarros de Mercedes"></div>
+          <div class="plate__body"><span class="plate__no">13</span><h3>Emblemas Turbo para Mercedes</h3><p class="plate__desc">Set de 2 letras decorativas para guardabarros en modelos AMG.</p><div class="plate__foot"><span class="plate__price">$20.403</span><span class="plate__meta">22% dcto. · 480 ventas</span></div></div>
         </a>
-        <a href="/go/lampara-escritorio" data-category="hogar" class="plate" rel="sponsored nofollow" aria-label="Ver Lámpara de escritorio LED regulable en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S804b975fde1a45a287d6b1e20b7ddaffC.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Lámpara de escritorio LED regulable"></div>
-          <div class="plate__body"><span class="plate__no">14 / 20</span><p class="plate__cat">Hogar</p><h3>Lámpara de escritorio LED regulable</h3><p class="plate__desc">Brazo articulado, intensidad ajustable y menos fatiga visual.</p><div class="plate__foot"><span class="plate__price">$79.000</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/irrigador-bucal-dr-yadent" class="plate" rel="sponsored nofollow" aria-label="Ver Irrigador bucal Dr.Yadent YD06 en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S6e7e7e0ab11f40e79e526fb0923b8ac6f.png" width="480" height="480" loading="lazy" decoding="async" alt="Irrigador bucal inalámbrico Dr.Yadent YD06"></div>
+          <div class="plate__body"><span class="plate__no">14</span><h3>Irrigador bucal Dr.Yadent YD06</h3><p class="plate__desc">300 ml, 7 boquillas, 4 modos, carga rápida USB-C y resistencia IPX7.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón F243TAN</span>
+            <span class="plate__coupon-value">−10.793,53</span>
+            <span class="plate__coupon-date">Vigente hasta 27 nov 2026</span>
+            <span class="plate__coupon-min">Mínimo 41.118,22 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$80.707</span><span class="plate__meta">44% dcto. · 1004 ventas</span></div></div>
         </a>
-        <a href="/go/reloj-inteligente" data-category="tecnologia" class="plate" rel="sponsored nofollow" aria-label="Ver Reloj inteligente con monitor de actividad en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S3d00dd491292421cbbedc383b1b0be39L.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Reloj inteligente con monitor de actividad"></div>
-          <div class="plate__body"><span class="plate__no">15 / 20</span><p class="plate__cat">Tecnología</p><h3>Reloj inteligente con monitor de actividad</h3><p class="plate__desc">Pasos, frecuencia cardíaca y notificaciones en la muñeca.</p><div class="plate__foot"><span class="plate__price">$119.000</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/camara-web-ugreen-4k" class="plate" rel="sponsored nofollow" aria-label="Ver Cámara web UGREEN 4K en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sc5531cfe0d744f76bd22374739da5c32p.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Cámara web UGREEN 4K con micrófonos duales"></div>
+          <div class="plate__body"><span class="plate__no">15</span><h3>Cámara web UGREEN 4K</h3><p class="plate__desc">Sensor de 8 MP con enfoque automático y dos micrófonos con cancelación de ruido.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón KR0864</span>
+            <span class="plate__coupon-value">−10.279,76</span>
+            <span class="plate__coupon-date">Vigente hasta 29 nov 2026</span>
+            <span class="plate__coupon-min">Mínimo 10.314,02 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$88.746</span><span class="plate__meta">23% dcto. · 4360 ventas</span></div></div>
         </a>
-        <a href="/go/soporte-movil" data-category="tecnologia" class="plate" rel="sponsored nofollow" aria-label="Ver Soporte magnético para teléfono en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S45375edaf9424d4593fd0d8ef36e177ft.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Soporte magnético para teléfono"></div>
-          <div class="plate__body"><span class="plate__no">16 / 20</span><p class="plate__cat">Accesorios</p><h3>Soporte magnético para teléfono</h3><p class="plate__desc">Fijación firme para escritorio, coche o cocina. Ajuste de ángulo.</p><div class="plate__foot"><span class="plate__price">$45.000</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/control-mobapad-m12" class="plate" rel="sponsored nofollow" aria-label="Ver Control MOBAPAD M12 en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S07f5e57fdd2d44eba22ec9cf24eb1f57A.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Control inalámbrico MOBAPAD M12 para Switch 2"></div>
+          <div class="plate__body"><span class="plate__no">16</span><h3>Control MOBAPAD M12</h3><p class="plate__desc">Para Nintendo Switch 2 con palancas TMR y botones mecánicos.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón AKNES7777</span>
+            <span class="plate__coupon-value">−3.426,59</span>
+            <span class="plate__coupon-date">Vigente hasta 29 nov 2026</span>
+            <span class="plate__coupon-min">Mínimo 68.531,72 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$213.686</span><span class="plate__meta">40% dcto. · 1097 ventas</span></div></div>
         </a>
-        <a href="/go/pelador-electrico" data-category="cocina" class="plate" rel="sponsored nofollow" aria-label="Ver Pelador eléctrico automático de frutas y verduras en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Ac8d0934d22e44e65a48926f24b1a74682.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Pelador eléctrico automático de frutas y verduras"></div>
-          <div class="plate__body"><span class="plate__no">17 / 20</span><p class="plate__cat">Cocina</p><h3>Pelador eléctrico automático de frutas y verduras</h3><p class="plate__desc">Recargable y rápido. Útil cuando cortar a mano se vuelve tedioso.</p><div class="plate__foot"><span class="plate__price">$139.000</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/kit-pared-cuco-navidad" class="plate" rel="sponsored nofollow" aria-label="Ver Reloj de pared 3D ROKR en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sc6094c8fa9524125b8450d399c21d6d4e.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Reloj de pared 3D ROKR con cuco navideño"></div>
+          <div class="plate__body"><span class="plate__no">17</span><h3>Reloj de pared 3D ROKR</h3><p class="plate__desc">Rompecabezas de madera con cuco navideño para decorar la sala.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón Q5TH1ZFZ76F2</span>
+            <span class="plate__coupon-value">−23.986,10</span>
+            <span class="plate__coupon-date">Vigente hasta 31 dic 2026</span>
+            <span class="plate__coupon-min">Mínimo 205.595,16 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$204.866</span><span class="plate__meta">54% dcto. · 193 ventas</span></div></div>
         </a>
-        <a href="/go/limpiador-joyas" data-category="hogar" class="plate" rel="sponsored nofollow" aria-label="Ver Limpiador ultrasónico de joyas y gafas en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S634b11946b8f4d5e819064a44775cc94A.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Limpiador ultrasónico de joyas y gafas"></div>
-          <div class="plate__body"><span class="plate__no">18 / 20</span><p class="plate__cat">Cuidado</p><h3>Limpiador ultrasónico de joyas y gafas</h3><p class="plate__desc">Anillos, relojes y lentes. Recupera el brillo en minutos.</p><div class="plate__foot"><span class="plate__price">$99.000</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/reloj-buceo-north-edge" class="plate" rel="sponsored nofollow" aria-label="Ver Reloj NORTH EDGE TRITON-TI en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S83f92b0f022845b29adbed107b9b8f3bD.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Reloj de buceo NORTH EDGE TRITON-TI de titanio"></div>
+          <div class="plate__body"><span class="plate__no">18</span><h3>Reloj NORTH EDGE TRITON-TI</h3><p class="plate__desc">Titanio y acero inoxidable, energía solar y resistencia al agua hasta 300 m.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón LBRZOB3L2Z8A</span>
+            <span class="plate__coupon-value">−13.706,34</span>
+            <span class="plate__coupon-date">Vigente hasta 27 nov 2026</span>
+            <span class="plate__coupon-min">Mínimo 171.329,30 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$168.145</span><span class="plate__meta">25% dcto. · 2032 ventas</span></div></div>
         </a>
-        <a href="/go/filtro-ducha" data-category="bienestar" class="plate" rel="sponsored nofollow" aria-label="Ver Filtro de ducha con cartucho reemplazable en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S3975b3145d7e4f4eb473602f048ea8aeV.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Filtro de ducha con cartucho reemplazable"></div>
-          <div class="plate__body"><span class="plate__no">19 / 20</span><p class="plate__cat">Bienestar</p><h3>Filtro de ducha con cartucho reemplazable</h3><p class="plate__desc">Reduce cloro y sedimentos. Piel y cabello con menos sequedad.</p><div class="plate__foot"><span class="plate__price">$69.000</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/protector-bucal-boxeo" class="plate" rel="sponsored nofollow" aria-label="Ver Protector bucal de boxeo en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S63e8804b0a5b4510b8a1b1cc5e38f952a.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Protector bucal deportivo para boxeo"></div>
+          <div class="plate__body"><span class="plate__no">19</span><h3>Protector bucal de boxeo</h3><p class="plate__desc">Aparato deportivo de ortodoncia para entrenamiento y contacto.</p><div class="plate__foot"><span class="plate__price">$9.189</span><span class="plate__meta">11% dcto. · 1055 ventas</span></div></div>
         </a>
-        <a href="/go/cargador-auto" data-category="auto" class="plate" rel="sponsored nofollow" aria-label="Ver Cargador inalámbrico magnético para auto en AliExpress">
-          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S7a17dbb0a2274eab927b310550ac7cc1B.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Cargador inalámbrico magnético para auto"></div>
-          <div class="plate__body"><span class="plate__no">20 / 20</span><p class="plate__cat">Auto</p><h3>Cargador inalámbrico magnético para auto</h3><p class="plate__desc">Soporte y carga Qi en un solo gesto. Para rejilla o parabrisas.</p><div class="plate__foot"><span class="plate__price">$79.000</span><span class="plate__meta">COP · referencial</span></div></div>
+        <a href="/go/miniaturas-ferrari-1-64" class="plate" rel="sponsored nofollow" aria-label="Ver Miniaturas Ferrari 1:64 en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S5039ecb6f10749d880cc3a54968baa09C.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Colección de miniaturas Ferrari a escala 1:64"></div>
+          <div class="plate__body"><span class="plate__no">20</span><h3>Miniaturas Ferrari 1:64</h3><p class="plate__desc">Modelos de aleación de la serie Ferrari para colección o regalo.</p><div class="plate__foot"><span class="plate__price">$25.356</span><span class="plate__meta">19% dcto. · 345 ventas</span></div></div>
         </a>
+        <a href="/go/baniador-piel-tiburon" class="plate" rel="sponsored nofollow" aria-label="Ver Bañador competición piel de tiburón en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/HTB14VfiXOzxK1Rjy1zkq6yHrVXa1.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Bañador de competición repelente al agua"></div>
+          <div class="plate__body"><span class="plate__no">21</span><h3>Bañador competición piel de tiburón</h3><p class="plate__desc">Traje de baño repelente al agua en tallas L a 5XL.</p><div class="plate__foot"><span class="plate__price">$33.091</span><span class="plate__meta">18% dcto. · 191 ventas</span></div></div>
+        </a>
+        <a href="/go/shorts-ciclismo-darevie" class="plate" rel="sponsored nofollow" aria-label="Ver Shorts ciclismo DAREVIE en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S215cb1f5b36b403a83f928495242d51eP.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Shorts de ciclismo DAREVIE con compresión"></div>
+          <div class="plate__body"><span class="plate__no">22</span><h3>Shorts ciclismo DAREVIE</h3><p class="plate__desc">Sin costuras, compresión 6.0 Elastic Interface y antideslizante.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón DAREVIE26011</span>
+            <span class="plate__coupon-value">−7.195,69</span>
+            <span class="plate__coupon-date">Vigente hasta 18 dic 2026</span>
+            <span class="plate__coupon-min">Mínimo 107.935,32 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$193.907</span><span class="plate__meta">17% dcto. · 840 ventas</span></div></div>
+        </a>
+        <a href="/go/pantalon-ciclismo-mtb-9d" class="plate" rel="sponsored nofollow" aria-label="Ver Pantalón ciclismo MTB 9D en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sf47327aa2c5f491f8c195b8ca44496fco.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Pantalón de ciclismo MTB con tirantes y badana 9D"></div>
+          <div class="plate__body"><span class="plate__no">23</span><h3>Pantalón ciclismo MTB 9D</h3><p class="plate__desc">Tirantes de silicona, secado rápido y badana 9D para rutas largas.</p><div class="plate__foot"><span class="plate__price">$26.115</span><span class="plate__meta">54% dcto. · 60 ventas</span></div></div>
+        </a>
+        <a href="/go/camiseta-vintage-saint-michael" class="plate" rel="sponsored nofollow" aria-label="Ver Camiseta vintage Saint Michael en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sc450e675bc9541f98e915563d77a4482s.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Camiseta vintage de manga larga Saint Michael"></div>
+          <div class="plate__body"><span class="plate__no">24</span><h3>Camiseta vintage Saint Michael</h3><p class="plate__desc">Manga larga, algodón y corte holgado unisex de talla grande.</p><div class="plate__foot"><span class="plate__price">$113.284</span><span class="plate__meta">13% dcto. · 242 ventas</span></div></div>
+        </a>
+        <a href="/go/controlador-8bitdo-n64" class="plate" rel="sponsored nofollow" aria-label="Ver Controlador 8BitDo N64 en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S93bb9345429343ae8e11ae73a47e5200P.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Controlador 8BitDo N64 con palanca analógica 3D"></div>
+          <div class="plate__body"><span class="plate__no">25</span><h3>Controlador 8BitDo N64</h3><p class="plate__desc">Analógico 3D para Switch, Switch 2, Windows y Android.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón AKNES7777</span>
+            <span class="plate__coupon-value">−3.426,59</span>
+            <span class="plate__coupon-date">Vigente hasta 29 nov 2026</span>
+            <span class="plate__coupon-min">Mínimo 68.531,72 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$122.467</span><span class="plate__meta">35% dcto. · 738 ventas</span></div></div>
+        </a>
+        <a href="/go/proyector-byintek-u4" class="plate" rel="sponsored nofollow" aria-label="Ver Proyector BYINTEK U4 Love 1 en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S1a295fa0223a4d258aaf5d4120ec9dbcX.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Proyector inteligente BYINTEK U4 Love 1"></div>
+          <div class="plate__body"><span class="plate__no">26</span><h3>Proyector BYINTEK U4 Love 1</h3><p class="plate__desc">4K/1080p con Android y WiFi para cine en casa.</p>
+          <div class="plate__coupon">
+            <span class="plate__coupon-code">Cupón CRIANCAS</span>
+            <span class="plate__coupon-value">−85.664,65</span>
+            <span class="plate__coupon-date">Vigente hasta 29 nov 2026</span>
+            <span class="plate__coupon-min">Mínimo 308.392,74 en carrito</span>
+          </div><div class="plate__foot"><span class="plate__price">$428.110,79</span><span class="plate__meta">62% dcto. · 1603 ventas</span></div></div>
+        </a>
+        <a href="/go/camiseta-deportiva-verano" class="plate" rel="sponsored nofollow" aria-label="Ver Camiseta deportiva sin mangas en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S4d7eb3a93f994534ace32896099caac5r.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Camiseta deportiva sin mangas de secado rápido"></div>
+          <div class="plate__body"><span class="plate__no">27</span><h3>Camiseta deportiva sin mangas</h3><p class="plate__desc">Secado rápido, transpirable y de hombros anchos para entrenar.</p><div class="plate__foot"><span class="plate__price">$25.909</span><span class="plate__meta">14% dcto. · 130 ventas</span></div></div>
+        </a>
+        <a href="/go/uniforme-portero-shinestone" class="plate" rel="sponsored nofollow" aria-label="Ver Uniforme de portero Shinestone en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/H5d97919f1a974382b4276d540f20627ep.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Uniforme de portero Shinestone con protección"></div>
+          <div class="plate__body"><span class="plate__no">28</span><h3>Uniforme de portero Shinestone</h3><p class="plate__desc">Jersey transpirable con esponja y pantalón con protección contra impactos.</p><div class="plate__foot"><span class="plate__price">$25.803</span><span class="plate__meta">57% dcto. · 57 ventas</span></div></div>
+        </a>
+        <a href="/go/cubierta-liquido-frenos-yamaha" class="plate" rel="sponsored nofollow" aria-label="Ver Cubierta líquido de frenos Yamaha en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sf043d17327ea4e8b996b7ebabd581330l.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Cubierta protectora del líquido de frenos para Yamaha"></div>
+          <div class="plate__body"><span class="plate__no">29</span><h3>Cubierta líquido de frenos Yamaha</h3><p class="plate__desc">Protector del depósito delantero y trasero para MT09 y FZ09.</p><div class="plate__foot"><span class="plate__price">$26.898</span><span class="plate__meta">7% dcto. · 109 ventas</span></div></div>
+        </a>
+
       </div>
 
-      <p class="empty" id="empty-state" role="status">No hay productos en esta categoría.</p>
-      <p class="catalogue__note">Los precios son referenciales en pesos colombianos y pueden variar según vendedor, promociones y tasa de cambio. El valor final se muestra en AliExpress antes de pagar.</p>
+      <p class="catalogue__note">Los precios son referenciales en pesos colombianos y pueden variar según vendedor, promociones y tasa de cambio. Las importaciones a Colombia pueden estar sujetas a IVA y aranceles.</p>
     </div>
   </main>
 
   <section id="preguntas" class="faq">
     <div class="wrap">
       <div><p class="eyebrow">Preguntas frecuentes</p><h2>Antes de decidir.</h2></div>
-      <dl>
-        <div><dt>¿Cuánto tarda el envío?</dt><dd>El tiempo y el costo los define AliExpress y se muestran al finalizar la compra. La mayoría de las publicaciones envían internacionalmente a Colombia.</dd></div>
-        <div><dt>¿Puedo devolver un producto?</dt><dd>Las devoluciones siguen la política del vendedor en AliExpress, indicada en cada publicación. Escríbenos si necesitas ayuda para encontrarla.</dd></div>
-        <div><dt>¿Dónde pago?</dt><dd>Pagas en la página de AliExpress. Aquí no procesamos pagos ni guardamos datos de tarjeta.</dd></div>
-        <div><dt>¿Cómo gana dinero Tienda Coolstuff?</dt><dd>Usamos enlaces de afiliado de AliExpress. Si compras desde ellos, recibimos una comisión sin costo adicional para ti. Esos enlaces se identifican como patrocinados.</dd></div>
-        <div><dt>¿Los precios son finales?</dt><dd>No. Son referenciales en COP y pueden cambiar según vendedor, promociones y tasa de cambio. El precio final aparece en AliExpress.</dd></div>
-      </dl>
+      <div>
+        <details>
+          <summary>¿Qué es Tienda Coolstuff?</summary>
+          <p>Una selección de objetos útiles con descripciones claras y precios de referencia en COP.</p>
+        </details>
+        <details>
+          <summary>¿Los precios son finales?</summary>
+          <p>No. Son referenciales y pueden cambiar según vendedor, promociones y tasa de cambio.</p>
+        </details>
+        <details>
+          <summary>¿Dónde puedo preguntar?</summary>
+          <p>Escríbenos por Messenger y respondemos tus dudas sobre la selección.</p>
+        </details>
+      </div>
     </div>
   </section>
 
   <section class="closing">
     <div class="wrap">
-      <div><p>Hay más de lo que parece</p><h2>Pregunta antes de comprar.</h2></div>
-      <div><p class="note">Cuéntanos para qué lo necesitas y te decimos con franqueza si la elección encaja. Sin presión ni guiones.</p><a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="btn">Escribir a Coolstuff</a></div>
+      <div><p>Hay más de lo que parece</p><h2>Pregunta antes de decidir.</h2></div>
+      <div><p class="note">Cuéntanos para qué lo necesitas y te decimos con franqueza si la elección encaja. Sin presión ni guiones.</p><a href="https://m.me/tienda.coolstuff" target="_blank" rel="noopener noreferrer" class="btn">Escribir a Coolstuff</a></div>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
       <p><img src="assets/coolstuff_logo.png" alt="Logo de Tienda Coolstuff"><strong>Tienda Coolstuff</strong> · Afiliados de AliExpress</p>
-      <p><a href="#preguntas">Preguntas</a> · <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer">Contacto</a></p>
+      <p><a href="#preguntas">Preguntas</a> · <a href="https://m.me/tienda.coolstuff" target="_blank" rel="noopener noreferrer">Contacto</a></p>
     </div>
   </footer>
 

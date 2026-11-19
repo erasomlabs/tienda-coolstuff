@@ -6,9 +6,10 @@
   "note": "Precios promocionales dinámicos. La comisión se calcula sobre el precio final pagado, no sobre el precio tachado. Verificar tasa real en Portals.",
   "catalogIntegration": {
     "date": "2026-11-19",
-    "catalogSize": 20,
-    "integratedFromResearch": ["proyector-hy300", "aspiradora-mascotas", "masajeador-cuello", "camara-ptz", "kit-estilizador", "robot-aspirador", "cepillo-alisador", "aspiradora-carro", "kit-aseo-mascotas", "proyector-hy300-4k"],
-    "retainedFromPreviousCatalog": ["limpieza-presion", "ventilador-cuello", "teclado-mecanico", "lampara-escritorio", "reloj-inteligente", "soporte-movil", "pelador-electrico", "limpiador-joyas", "filtro-ducha", "cargador-auto"]
+    "catalogSize": 29,
+    "status": "superseded-by-selected-catalog",
+    "selectedCatalog": "assets/catalogo-elegido.json",
+    "note": "Este archivo conserva la investigación original de 12 candidatos. El catálogo publicado de 20 productos fue reemplazado por los 29 productos elegidos en la exportación de Portals; esos productos, con enlaces reales y cupones, están en selectedCatalog."
   },
   "assumptions": {
     "commissionConservativePct": 6,

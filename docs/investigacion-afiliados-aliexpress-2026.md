@@ -5,7 +5,7 @@
 **Mercado objetivo:** Colombia / LatAm hispanohablante  
 **Moneda:** COP  
 **Modelo actual:** afiliado AliExpress con redirección (`/go/<id>`)  
-**Estado:** sin PID ni enlaces de seguimiento reales; los enlaces actuales son búsquedas.
+**Estado:** 29 productos con enlaces de seguimiento reales (`s.click.aliexpress.com/e/_...`) y 17 cupones con fecha de vencimiento. El PID sigue vacío porque el tracking ya viene incrustado en cada enlace.
 
 ---
 
@@ -135,26 +135,39 @@ Precios vistos el **19/11/2026** en `es.aliexpress.com` con envío a Colombia. S
 10. Robot aspirador de gama alta.
 11. Proyector 4K de $800k.
 
-### 4.2 Cómo quedó el catálogo (20 productos)
+### 4.2 Cómo quedó el catálogo (29 productos)
 
-El catálogo se amplió a **20 productos en 8 categorías**. Se priorizó la comisión absoluta y la demostrabilidad en video, sin descartar los productos de bajo ticket que sirven para atraer tráfico.
+El catálogo anterior de 20 productos fue **reemplazado por los 29 productos elegidos** en la exportación de Portals (`CO_COP_es`, 19/11/2026). Ya no hay enlaces de búsqueda ni URLs sin tracking: los 29 destinos son `s.click.aliexpress.com/e/_...` verificados, con `aff_fcid` y `tt=CPS_NORM`.
 
-**Diez productos nuevos (fichas reales de AliExpress, con imagen verificada):**
+**Distribución por categoría**
 
-1. Proyector Magcubic HY300 Pro — $226.849
-2. Aspiradora de pelo para mascotas 3 en 1 — $185.052
-3. Masajeador de cuello y hombros — $148.355
-4. Cámara PTZ WiFi para exteriores — $80.119
-5. Cepillo rizador iónico 3 en 1 — $97.208
-6. Robot aspirador y fregador — $196.001
-7. Peine alisador iónico — $56.162
-8. Aspiradora inalámbrica 120 W para carro — $38.344
-9. Kit de aseo para mascotas 8 en 1 — $195.338
-10. Proyector KaiAqua 4K HY300 — $251.413
+| Categoría | Productos |
+|---|---:|
+| Tecnología | 7 |
+| Deporte | 6 |
+| Auto y moto | 4 |
+| Entretenimiento | 4 |
+| Ciclismo | 4 |
+| Seguridad | 1 |
+| Hogar | 1 |
+| Bienestar | 1 |
+| Moda | 1 |
 
-**Diez productos conservados:** limpieza a presión, ventilador de cuello, teclado mecánico, lámpara de escritorio, reloj inteligente, soporte magnético, pelador eléctrico, limpiador ultrasónico, filtro de ducha y cargador para auto.
+**Datos importados por producto:** ID de AliExpress, imagen, precio con descuento, porcentaje de descuento, tasa de comisión directa, comisión estimada, ventas en 180 días, feedback positivo, enlace de afiliado y, cuando aplica, código de cupón con valor, mínimo y vencimiento.
 
-**Regla de corte:** el reloj inteligente, el teclado mecánico, el soporte magnético y el filtro de ducha se mantuvieron por variedad y alcance, no por margen. Si después de 300 clics no generan ventas, se descartan antes de cambiar de modelo de negocio.
+**Cupones:** 17 de 29 productos tienen cupón. Todos estaban vigentes al 19/11/2026; 9 vencen antes del 30/11/2026. El sitio muestra código, valor, mínimo y fecha, y aclara que AliExpress valida el cupón en el checkout.
+
+**Top por comisión estimada**
+
+| Producto | Comisión estimada | Tasa | Precio |
+|---|---:|---:|---:|
+| Proyector BYINTEK LOVE 2 | $30.009 | 3,5% | $857.400 |
+| Consola Anbernic RG Rotate | $23.988 | 7,0% | $342.687 |
+| Culotte DAREVIE Winter | $15.524 | 10,5% | $147.846 |
+| Shorts ciclismo DAREVIE | $15.513 | 8,0% | $193.907 |
+| Control MOBAPAD M12 | $14.958 | 7,0% | $213.686 |
+
+**Regla de corte:** se conservó el catálogo completo del XLS, incluidos productos de ticket bajo y nichos estrechos, porque aportan variedad y contenido para redes. Si después de 300 clics un producto no genera ventas, se descarta antes de cambiar de modelo de negocio.
 
 ### 4.3 Productos que NO conviene promover
 
@@ -186,6 +199,8 @@ El catálogo se amplió a **20 productos en 8 categorías**. Se priorizó la com
 **No puedes crear cupones universales de AliExpress.** Los cupones los emite AliExpress o el vendedor. Lo que sí puedes hacer es **combinar** un enlace de afiliado con un cupón vigente y mostrarlo con transparencia.
 
 ### 5.2 Flujo correcto en Portals
+
+Los 29 enlaces del catálogo actual ya pasaron por este flujo y están guardados en `assets/affiliate-links.json`. Para productos nuevos, repetir el proceso:
 
 1. Entrar a `https://portals.aliexpress.com/` con la cuenta de AliExpress.
 2. Solicitar ingreso al programa de afiliados (si aún no estás dentro).

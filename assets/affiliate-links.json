@@ -1,106 +1,239 @@
 {
   "pid": "",
-  "instructions": "Cuando tengas tu PID de AliExpress, pégalo aquí y reemplaza affiliateUrl de cada producto por el enlace de seguimiento generado en Portals. Para los productos nuevos, genera el enlace desde la URL directa del artículo; las URL de búsqueda se conservan solo como respaldo de los productos antiguos.",
+  "instructions": "Los 29 productos usan enlaces de seguimiento reales de AliExpress (s.click.aliexpress.com/e/_...) exportados desde Portals. affiliateUrl es el destino principal; url es la ficha directa de respaldo.",
+  "source": "Exportación de Portals AliExpress, hoja CO_COP_es, 19/11/2026",
   "products": {
-    "proyector-hy300": {
-      "title": "Proyector Magcubic HY300 Pro 2026",
-      "url": "https://www.aliexpress.com/item/1005013362909618.html",
-      "affiliateUrl": ""
+    "soporte-camara-ventosa": {
+      "title": "Soporte con ventosa para cámara",
+      "productId": "1005010196417486",
+      "url": "https://www.aliexpress.com/item/1005010196417486.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3ecPCHF",
+      "couponCode": "AOE0V1",
+      "couponEndsAt": "2026-11-30 23:59:59"
     },
-    "aspiradora-mascotas": {
-      "title": "Aspiradora de pelo para mascotas 3 en 1",
-      "url": "https://www.aliexpress.com/item/1005012854240008.html",
-      "affiliateUrl": ""
+    "proyector-byintek-love2": {
+      "title": "Proyector BYINTEK LOVE 2",
+      "productId": "1005007251573239",
+      "url": "https://www.aliexpress.com/item/1005007251573239.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c4Bi7sPR",
+      "couponCode": "U6BRMARCUS",
+      "couponEndsAt": "2026-12-31 23:59:59"
     },
-    "masajeador-cuello": {
-      "title": "Masajeador de cuello y hombros recargable",
-      "url": "https://www.aliexpress.com/item/1005013603216779.html",
-      "affiliateUrl": ""
+    "audifonos-ugreen-max5s": {
+      "title": "Audífonos UGREEN Max5s ANC",
+      "productId": "1005012596131779",
+      "url": "https://www.aliexpress.com/item/1005012596131779.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c41uj3f3",
+      "couponCode": "DLIMSHAVIM2A",
+      "couponEndsAt": "2026-12-13 22:59:59"
     },
-    "camara-ptz": {
-      "title": "Cámara PTZ WiFi para exteriores",
-      "url": "https://www.aliexpress.com/item/1005013619130392.html",
-      "affiliateUrl": ""
+    "empunadura-manillar-atv": {
+      "title": "Empuñadura de manillar para ATV",
+      "productId": "1005003744119463",
+      "url": "https://www.aliexpress.com/item/1005003744119463.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3NRzeTn",
+      "couponCode": null,
+      "couponEndsAt": null
     },
-    "kit-estilizador": {
-      "title": "Cepillo rizador iónico 3 en 1",
-      "url": "https://www.aliexpress.com/item/1005007115094712.html",
-      "affiliateUrl": ""
+    "consola-anbernic-rg-rotate": {
+      "title": "Consola Anbernic RG Rotate",
+      "productId": "1005012233611880",
+      "url": "https://www.aliexpress.com/item/1005012233611880.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3N5pOXJ",
+      "couponCode": "QF1LIG9JHEYN",
+      "couponEndsAt": "2026-11-29 22:59:59"
     },
-    "robot-aspirador": {
-      "title": "Robot aspirador y fregador inteligente",
-      "url": "https://www.aliexpress.com/item/1005013606845201.html",
-      "affiliateUrl": ""
+    "tapacubos-nissan-56mm": {
+      "title": "Set de 4 tapacubos 56 mm",
+      "productId": "1005009133623269",
+      "url": "https://www.aliexpress.com/item/1005009133623269.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3z5ZW3f",
+      "couponCode": null,
+      "couponEndsAt": null
     },
-    "cepillo-alisador": {
-      "title": "Peine alisador iónico antiescaldado",
-      "url": "https://www.aliexpress.com/item/1005006996293929.html",
-      "affiliateUrl": ""
+    "culotte-darevie-winter": {
+      "title": "Culotte ciclismo DAREVIE Winter",
+      "productId": "1005004870417481",
+      "url": "https://www.aliexpress.com/item/1005004870417481.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c36HvbvX",
+      "couponCode": "DAREVIE26011",
+      "couponEndsAt": "2026-12-18 23:59:59"
     },
-    "aspiradora-carro": {
-      "title": "Aspiradora inalámbrica 120 W para carro",
-      "url": "https://www.aliexpress.com/item/1005012011245009.html",
-      "affiliateUrl": ""
+    "camara-ptz-lenovo-4k": {
+      "title": "Cámara PTZ Lenovo 4K 8MP",
+      "productId": "1005007435853162",
+      "url": "https://www.aliexpress.com/item/1005007435853162.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c37e9xj7",
+      "couponCode": "BABLGINA2U39",
+      "couponEndsAt": "2026-12-18 23:59:59"
     },
-    "kit-aseo-mascotas": {
-      "title": "Kit de aseo para mascotas 8 en 1 con secador",
-      "url": "https://www.aliexpress.com/item/1005013364779539.html",
-      "affiliateUrl": ""
+    "chaqueta-ciclismo-darevie": {
+      "title": "Chaqueta ciclismo DAREVIE",
+      "productId": "1005007868473890",
+      "url": "https://www.aliexpress.com/item/1005007868473890.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3rLJGe9",
+      "couponCode": "DAREVIE26011",
+      "couponEndsAt": "2026-12-18 23:59:59"
     },
-    "proyector-hy300-4k": {
-      "title": "Proyector KaiAqua 4K Android 11 HY300",
-      "url": "https://www.aliexpress.com/item/1005013625935853.html",
-      "affiliateUrl": ""
+    "filtro-kf-concept-3en1": {
+      "title": "Filtro K&F Concept 3 en 1",
+      "productId": "1005008889073423",
+      "url": "https://www.aliexpress.com/item/1005008889073423.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c4l5RFSZ",
+      "couponCode": "0VRYQ7N22UG5",
+      "couponEndsAt": "2026-11-30 23:59:59"
     },
-    "limpieza-presion": {
-      "title": "Pistola de limpieza a presión inalámbrica",
-      "url": "https://www.aliexpress.com/w/wholesale-pressure-washer-gun.html",
-      "affiliateUrl": ""
+    "carrete-kite-27cm": {
+      "title": "Carrete de pipa 27 cm",
+      "productId": "1005005519819354",
+      "url": "https://www.aliexpress.com/item/1005005519819354.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c4s0wzFx",
+      "couponCode": null,
+      "couponEndsAt": null
     },
-    "ventilador-cuello": {
-      "title": "Ventilador portátil de cuello sin aspas",
-      "url": "https://www.aliexpress.com/w/wholesale-neck-fan.html",
-      "affiliateUrl": ""
+    "auriculares-conduccion-osea-znp": {
+      "title": "Auriculares óseos ZNP E12",
+      "productId": "1005013213361160",
+      "url": "https://www.aliexpress.com/item/1005013213361160.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3V5Nigt",
+      "couponCode": "LV6WVV6WZV3M",
+      "couponEndsAt": "2027-06-30 23:59:59"
     },
-    "teclado-mecanico": {
-      "title": "Teclado mecánico compacto retroiluminado",
-      "url": "https://www.aliexpress.com/w/wholesale-mechanical-keyboard.html",
-      "affiliateUrl": ""
+    "emblema-turbo-mercedes": {
+      "title": "Emblemas Turbo para Mercedes",
+      "productId": "1005008834353480",
+      "url": "https://www.aliexpress.com/item/1005008834353480.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c2Q6HqYD",
+      "couponCode": null,
+      "couponEndsAt": null
     },
-    "lampara-escritorio": {
-      "title": "Lámpara de escritorio LED regulable",
-      "url": "https://www.aliexpress.com/w/wholesale-desk-lamp.html",
-      "affiliateUrl": ""
+    "irrigador-bucal-dr-yadent": {
+      "title": "Irrigador bucal Dr.Yadent YD06",
+      "productId": "1005008756126002",
+      "url": "https://www.aliexpress.com/item/1005008756126002.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3bUwY2z",
+      "couponCode": "F243TAN",
+      "couponEndsAt": "2026-11-27 22:59:59"
     },
-    "reloj-inteligente": {
-      "title": "Reloj inteligente con monitor de actividad",
-      "url": "https://www.aliexpress.com/w/wholesale-smart-watch.html",
-      "affiliateUrl": ""
+    "camara-web-ugreen-4k": {
+      "title": "Cámara web UGREEN 4K",
+      "productId": "1005009234854371",
+      "url": "https://www.aliexpress.com/item/1005009234854371.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c4CzzSpx",
+      "couponCode": "KR0864",
+      "couponEndsAt": "2026-11-29 22:59:59"
     },
-    "soporte-movil": {
-      "title": "Soporte magnético para teléfono",
-      "url": "https://www.aliexpress.com/w/wholesale-phone-holder.html",
-      "affiliateUrl": ""
+    "control-mobapad-m12": {
+      "title": "Control MOBAPAD M12",
+      "productId": "1005012274985846",
+      "url": "https://www.aliexpress.com/item/1005012274985846.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3IHZyyD",
+      "couponCode": "AKNES7777",
+      "couponEndsAt": "2026-11-29 22:59:59"
     },
-    "pelador-electrico": {
-      "title": "Pelador eléctrico automático de frutas y verduras",
-      "url": "https://www.aliexpress.com/w/wholesale-electric-peeler.html",
-      "affiliateUrl": ""
+    "kit-pared-cuco-navidad": {
+      "title": "Reloj de pared 3D ROKR",
+      "productId": "1005013407548745",
+      "url": "https://www.aliexpress.com/item/1005013407548745.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3NnFH0z",
+      "couponCode": "Q5TH1ZFZ76F2",
+      "couponEndsAt": "2026-12-31 23:59:59"
     },
-    "limpiador-joyas": {
-      "title": "Limpiador ultrasónico de joyas y gafas",
-      "url": "https://www.aliexpress.com/w/wholesale-jewelry-cleaner.html",
-      "affiliateUrl": ""
+    "reloj-buceo-north-edge": {
+      "title": "Reloj NORTH EDGE TRITON-TI",
+      "productId": "1005010311057919",
+      "url": "https://www.aliexpress.com/item/1005010311057919.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c4oHFjbF",
+      "couponCode": "LBRZOB3L2Z8A",
+      "couponEndsAt": "2026-11-27 22:59:59"
     },
-    "filtro-ducha": {
-      "title": "Filtro de ducha con cartucho reemplazable",
-      "url": "https://www.aliexpress.com/w/wholesale-shower-filter.html",
-      "affiliateUrl": ""
+    "protector-bucal-boxeo": {
+      "title": "Protector bucal de boxeo",
+      "productId": "1005005254868305",
+      "url": "https://www.aliexpress.com/item/1005005254868305.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c38lfgKV",
+      "couponCode": null,
+      "couponEndsAt": null
     },
-    "cargador-auto": {
-      "title": "Cargador inalámbrico magnético para auto",
-      "url": "https://www.aliexpress.com/w/wholesale-car-charger.html",
-      "affiliateUrl": ""
+    "miniaturas-ferrari-1-64": {
+      "title": "Miniaturas Ferrari 1:64",
+      "productId": "1005012832033342",
+      "url": "https://www.aliexpress.com/item/1005012832033342.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3egSZ7F",
+      "couponCode": null,
+      "couponEndsAt": null
+    },
+    "baniador-piel-tiburon": {
+      "title": "Bañador competición piel de tiburón",
+      "productId": "32952593614",
+      "url": "https://www.aliexpress.com/item/32952593614.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3BTjpAZ",
+      "couponCode": null,
+      "couponEndsAt": null
+    },
+    "shorts-ciclismo-darevie": {
+      "title": "Shorts ciclismo DAREVIE",
+      "productId": "1005012468074243",
+      "url": "https://www.aliexpress.com/item/1005012468074243.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c40KFC4D",
+      "couponCode": "DAREVIE26011",
+      "couponEndsAt": "2026-12-18 23:59:59"
+    },
+    "pantalon-ciclismo-mtb-9d": {
+      "title": "Pantalón ciclismo MTB 9D",
+      "productId": "1005011924286425",
+      "url": "https://www.aliexpress.com/item/1005011924286425.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3QRje0t",
+      "couponCode": null,
+      "couponEndsAt": null
+    },
+    "camiseta-vintage-saint-michael": {
+      "title": "Camiseta vintage Saint Michael",
+      "productId": "1005007778481987",
+      "url": "https://www.aliexpress.com/item/1005007778481987.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3Sr4grX",
+      "couponCode": null,
+      "couponEndsAt": null
+    },
+    "controlador-8bitdo-n64": {
+      "title": "Controlador 8BitDo N64",
+      "productId": "1005009628375620",
+      "url": "https://www.aliexpress.com/item/1005009628375620.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c2xpakZF",
+      "couponCode": "AKNES7777",
+      "couponEndsAt": "2026-11-29 22:59:59"
+    },
+    "proyector-byintek-u4": {
+      "title": "Proyector BYINTEK U4 Love 1",
+      "productId": "1005006965436436",
+      "url": "https://www.aliexpress.com/item/1005006965436436.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c38zJbQ1",
+      "couponCode": "CRIANCAS",
+      "couponEndsAt": "2026-11-29 22:59:59"
+    },
+    "camiseta-deportiva-verano": {
+      "title": "Camiseta deportiva sin mangas",
+      "productId": "1005011908590387",
+      "url": "https://www.aliexpress.com/item/1005011908590387.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3FuOQe9",
+      "couponCode": null,
+      "couponEndsAt": null
+    },
+    "uniforme-portero-shinestone": {
+      "title": "Uniforme de portero Shinestone",
+      "productId": "32962504136",
+      "url": "https://www.aliexpress.com/item/32962504136.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c4dBV8jr",
+      "couponCode": null,
+      "couponEndsAt": null
+    },
+    "cubierta-liquido-frenos-yamaha": {
+      "title": "Cubierta líquido de frenos Yamaha",
+      "productId": "1005005859996858",
+      "url": "https://www.aliexpress.com/item/1005005859996858.html",
+      "affiliateUrl": "https://s.click.aliexpress.com/e/_c3D18eBf",
+      "couponCode": null,
+      "couponEndsAt": null
     }
   }
 }
