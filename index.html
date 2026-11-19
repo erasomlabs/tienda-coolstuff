@@ -1,316 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoolStuff Store | There's more than meets the eye</title>
-    <meta name="description" content="Curated gadgets, desk tools and design finds that earn their place. Honest picks in USD, shipped by trusted suppliers. There's more than meets the eye.">
-    <meta property="og:title" content="CoolStuff Store | There's more than meets the eye">
-    <meta property="og:description" content="Curated gadgets and design finds that earn their place. Clear prices, trusted suppliers, no filler.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://coolstuff-store.netlify.app">
-    <meta property="og:image" content="https://coolstuff-store.netlify.app/assets/coolstuff_logo.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="assets/coolstuff_logo.png" type="image/png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        mystic: '#5F27CD',
-                        digital: '#12F6D2',
-                        ingenio: '#FEEA00',
-                        beige: '#FFF8E1',
-                        charcoal: '#1A1A2E'
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Coolstuff | There's more than meets the eye</title>
+  <meta name="description" content="Curated gadgets, desk tools and design finds that earn their place. Honest picks in USD, shipped by trusted suppliers. There's more than meets the eye.">
+  <meta property="og:title" content="Tienda Coolstuff | There's more than meets the eye">
+  <meta property="og:description" content="Curated gadgets and design finds that earn their place. Clear prices, trusted suppliers, no filler.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tienda-coolstuff.netlify.app">
+  <meta property="og:image" content="https://tienda-coolstuff.netlify.app/assets/coolstuff_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/coolstuff_logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #e9ebe4;
+      --plate: #f5f6f1;
+      --ink: #14213d;
+      --signal: #f2542d;
+      --muted: #5b6675;
+      --line: #c5c9be;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Public Sans", system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; }
+    h1, h2, h3, .display { font-family: "Space Grotesk", system-ui, sans-serif; line-height: 1.05; letter-spacing: -0.03em; margin: 0; }
+    .wrap { width: min(74rem, calc(100% - 2.5rem)); margin-inline: auto; }
+
+    /* Masthead */
+    .masthead { border-bottom: 1px solid var(--line); background: var(--paper); position: sticky; top: 0; z-index: 40; }
+    .masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 4.5rem; }
+    .brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .brand img { width: 2.5rem; height: 2.5rem; object-fit: contain; }
+    .brand span { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em; }
+    .nav { display: flex; align-items: center; gap: 2rem; }
+    .nav a { font-size: .9rem; font-weight: 600; text-decoration: none; color: var(--muted); }
+    .nav a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: .3em; }
+    .btn { display: inline-block; padding: .7rem 1.4rem; background: var(--signal); color: #fff; font-weight: 700; font-size: .85rem; text-decoration: none; letter-spacing: .01em; }
+    .btn:hover { background: #d64420; }
+    .btn--ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    .btn--ghost:hover { background: var(--ink); color: var(--paper); }
+
+    /* Hero */
+    .hero { padding: clamp(4rem, 11vw, 8.5rem) 0 clamp(3.5rem, 8vw, 6rem); }
+    .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); gap: clamp(2rem, 6vw, 5rem); align-items: end; }
+    .eyebrow { font-size: .8rem; font-weight: 600; color: var(--signal); letter-spacing: .12em; text-transform: uppercase; margin: 0 0 1.5rem; }
+    .hero h1 { font-size: clamp(3.4rem, 10vw, 7.5rem); font-weight: 700; }
+    .hero h1 em { display: block; font-style: normal; color: var(--signal); }
+    .hero .lede { max-width: 34rem; font-size: clamp(1.05rem, 2vw, 1.3rem); color: var(--muted); margin: 2rem 0 0; }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.25rem; }
+    .hero__stamp { border-top: 4px solid var(--signal); padding-top: 1.25rem; }
+    .hero__stamp img { width: clamp(6rem, 14vw, 9rem); height: auto; display: block; }
+    .hero__stamp p { font-size: .8rem; color: var(--muted); margin: 1rem 0 0; max-width: 14rem; }
+
+    /* Trust row */
+    .trust { border-block: 1px solid var(--line); background: var(--plate); }
+    .trust ul { list-style: none; margin: 0; padding: 1.1rem 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .trust li { font-size: .85rem; font-weight: 600; display: flex; gap: .55rem; align-items: baseline; }
+    .trust li::before { content: ""; width: .5rem; height: .5rem; background: var(--signal); flex: none; }
+
+    /* Catalogue */
+    .catalogue { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+    .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .section-head h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; }
+    .section-head p { max-width: 20rem; color: var(--muted); font-size: .9rem; margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+    .plate { background: var(--plate); border-top: 3px solid var(--line); text-decoration: none; display: flex; flex-direction: column; transition: border-color .2s ease; }
+    .plate:hover { border-top-color: var(--signal); }
+    .plate__img { aspect-ratio: 4 / 3; overflow: hidden; background: #dfe2d8; }
+    .plate__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+    .plate:hover .plate__img img { transform: scale(1.04); }
+    .plate__body { padding: 1.1rem 1.1rem 1.25rem; display: flex; flex-direction: column; flex: 1; }
+    .plate__no { font-family: "Space Grotesk", sans-serif; font-size: .75rem; color: var(--signal); font-weight: 700; letter-spacing: .05em; }
+    .plate__cat { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: .6rem 0 0; }
+    .plate h3 { font-size: 1.05rem; font-weight: 600; margin: .45rem 0 0; letter-spacing: -0.015em; }
+    .plate__desc { font-size: .85rem; color: var(--muted); margin: .6rem 0 1.1rem; }
+    .plate__foot { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; margin-top: auto; border-top: 1px solid var(--line); padding-top: .8rem; }
+    .plate__price { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.15rem; }
+    .plate__meta { font-size: .72rem; color: var(--muted); }
+
+    /* FAQ */
+    .faq { border-top: 1px solid var(--line); padding: clamp(3.5rem, 8vw, 6rem) 0; }
+    .faq .wrap { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: clamp(2rem, 6vw, 5rem); }
+    .faq h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
+    .faq dl { margin: 0; }
+    .faq div { border-top: 1px solid var(--line); padding: 1.25rem 0; }
+    .faq div:last-child { border-bottom: 1px solid var(--line); }
+    .faq dt { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 1.1rem; }
+    .faq dd { margin: .5rem 0 0; color: var(--muted); font-size: .95rem; max-width: 38rem; }
+
+    /* Closing */
+    .closing { background: var(--ink); color: var(--paper); padding: clamp(3rem, 7vw, 5rem) 0; }
+    .closing .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; }
+    .closing p { margin: 0; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--signal); }
+    .closing h2 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; margin-top: .75rem; }
+    .closing .note { font-size: .95rem; color: #b9c2d0; max-width: 26rem; }
+
+    footer { border-top: 1px solid var(--line); padding: 2rem 0 2.5rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; align-items: center; font-size: .85rem; color: var(--muted); }
+    footer img { width: 2rem; height: 2rem; object-fit: contain; vertical-align: middle; margin-right: .5rem; }
+    footer strong { color: var(--ink); }
+
+    @media (max-width: 1000px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero .wrap { grid-template-columns: 1fr; }
+      .hero__stamp { display: flex; align-items: center; gap: 1.5rem; }
+      .hero__stamp img { width: 5rem; }
+      .hero__stamp p { margin: 0; }
+    }
+    @media (max-width: 760px) {
+      .nav { display: none; }
+      .trust ul { grid-template-columns: repeat(2, 1fr); }
+      .faq .wrap { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  </style>
 </head>
-<body class="bg-charcoal text-beige font-sans antialiased scroll-smooth">
+<body>
 
-    <!-- Header / Nav -->
-    <header class="sticky top-0 z-40 backdrop-blur bg-charcoal/90 border-b border-white/10">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
-            <a href="#" class="flex items-center gap-3">
-                <img src="assets/coolstuff_logo.png" alt="CoolStuff Store logo" class="h-10 w-10 rounded-md object-contain">
-                <div class="text-base leading-none">
-                    <div class="text-xs uppercase tracking-[0.3em] text-ingenio">Tienda</div>
-                    <div class="text-lg font-extrabold tracking-tight text-white">CoolStuff <span class="text-digital">Store</span></div>
-                </div>
-            </a>
-            <nav class="hidden md:flex items-center gap-6 text-sm text-beige/90">
-                <a href="#products" class="hover:text-white transition-colors">Discover</a>
-                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
-                <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Contact</a>
-            </nav>
-            <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-digital text-charcoal text-xs font-bold uppercase tracking-wider hover:bg-cyan-400 transition-colors">
-                Messenger
-            </a>
-        </div>
-    </header>
-
-    <!-- Hero -->
-    <section class="relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(95,39,205,0.35)_1.5%,transparent_20%),radial-gradient(circle_at_85%_20%,rgba(18,246,210,0.2)_2%,transparent_20%),radial-gradient(circle_at_20%_85%,rgba(254,234,0,0.15)_2%,transparent_20%)] z-0"></div>
-        <div class="max-w-6xl mx-auto px-4 py-20 md:py-28 lg:py-36 relative z-10">
-            <div class="max-w-3xl">
-                <p class="text-digital uppercase tracking-[0.3em] text-[10px] md:text-sm mb-5">There's more than meets the eye</p>
-                <img src="assets/coolstuff_logo.png" alt="CoolStuff Store logo" class="w-28 h-28 sm:w-36 sm:h-36 object-contain mb-6">
-                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight text-white">
-                    CoolStuff<br><span class="text-digital">Store.</span>
-                </h1>
-                <p class="mt-6 text-lg sm:text-xl text-beige/80 max-w-2xl leading-relaxed">
-                    Objects where ingenuity, design and function meet. Each pick is chosen for one reason: it works better than the obvious alternative.
-                </p>
-                <div class="mt-8 flex flex-wrap gap-3">
-                    <a href="#products" class="px-6 py-3 rounded-full bg-digital text-charcoal font-bold hover:bg-cyan-400 transition-colors">See the picks</a>
-                    <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors">Ask a question</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trust bar -->
-    <div class="border-y border-white/5 bg-white/[0.02]">
-        <div class="max-w-6xl mx-auto px-4 py-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-xs sm:text-sm text-beige/70">
-            <div><span class="text-ingenio">✓</span> Prices in USD</div>
-            <div><span class="text-ingenio">✓</span> Vetted suppliers</div>
-            <div><span class="text-ingenio">✓</span> Checkout at the supplier</div>
-            <div><span class="text-ingenio">✓</span> Questions answered by a person</div>
-        </div>
+  <header class="masthead">
+    <div class="wrap">
+      <a href="#" class="brand"><img src="assets/coolstuff_logo.png" alt="Tienda Coolstuff logo"><span>Tienda Coolstuff</span></a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#products">Discover</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer">Contact</a>
+      </nav>
+      <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="btn">Messenger</a>
     </div>
+  </header>
 
-    <!-- Products -->
-    <main id="products" class="max-w-6xl mx-auto px-4 py-16 md:py-24">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
-            <div>
-                <p class="text-ingenio uppercase tracking-[0.2em] text-xs md:text-sm mb-2">Top Picks</p>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Discover. Buy.<br><span class="text-digital">Repeat.</span></h2>
-            </div>
-            <p class="text-beige/60 text-sm max-w-xs">Ten objects chosen for function first. Prices in USD; shipping and returns follow each supplier's policy.</p>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">There's more than meets the eye</p>
+        <h1>Tienda<br><em>Coolstuff.</em></h1>
+        <p class="lede">Objects where ingenuity, design and function meet. Each pick is chosen for one reason: it works better than the obvious alternative.</p>
+        <div class="hero__actions">
+          <a href="#products" class="btn">See the picks</a>
+          <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">Ask a question</a>
         </div>
+      </div>
+      <div class="hero__stamp">
+        <img src="assets/coolstuff_logo.png" alt="Tienda Coolstuff logo">
+        <p>Curated objects, plain descriptions, no filler.</p>
+      </div>
+    </div>
+  </section>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+  <div class="trust">
+    <div class="wrap">
+      <ul>
+        <li>Prices in USD</li>
+        <li>Vetted suppliers</li>
+        <li>Checkout at the supplier</li>
+        <li>Questions answered by a person</li>
+      </ul>
+    </div>
+  </div>
 
-            <!-- Product 1 -->
-            <a href="https://www.aliexpress.com/item/32999193139.html" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5 hover:border-digital/30 transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1590936246509-7277f5c56c75?w=800&q=80" alt="Cordless Pressure Washer Gun" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-4">
-                    <p class="text-[10px] uppercase tracking-widest text-digital/80">Cleaning</p>
-                    <h3 class="mt-1 text-base font-semibold text-white leading-snug">Cordless Pressure Washer Gun, 1000 PSI</h3>
-                    <p class="mt-2 text-beige/60 text-sm line-clamp-2">Collapsible, powerful. Perfect for patios, cars and driveways.</p>
-                    <div class="mt-3 flex items-center justify-between">
-                        <span class="text-lg font-bold text-white">$59.99</span>
-                        <span class="text-[10px] text-beige/40">Save 30%</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Product 2 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5 hover:border-digital/30 transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1541275566-8a9e702bafa8?w=800&q=80" alt="LED Star Projector Night Light" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-4">
-                    <p class="text-[10px] uppercase tracking-widest text-digital/80">Home Ambience</p>
-                    <h3 class="mt-1 text-base font-semibold text-white leading-snug">LED Star Projector Night Light</h3>
-                    <p class="mt-2 text-beige/60 text-sm line-clamp-2">Romantic galaxy night sky for bedrooms and movie nights.</p>
-                    <div class="mt-3 flex items-center justify-between">
-                        <span class="text-lg font-bold text-white">$29.99</span>
-                        <span class="text-[10px] text-beige/40">9 modes</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Product 3 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5 hover:border-digital/30 transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1627728829313-59ffcebc2842?w=800&q=80" alt="Smart Energy-Saving Power Outlet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-4">
-                    <p class="text-[10px] uppercase tracking-widest text-digital/80">Smart Home</p>
-                    <h3 class="mt-1 text-base font-semibold text-white leading-snug">Smart Energy-Saving Outlet + Timer</h3>
-                    <p class="mt-2 text-beige/60 text-sm line-clamp-2">Cut standby power. Pays for itself in under a month.</p>
-                    <div class="mt-3 flex items-center justify-between">
-                        <span class="text-lg font-bold text-white">$24.99</span>
-                        <span class="text-[10px] text-beige/40">Wi-Fi + schedule</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Product 4 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5 hover:border-digital/30 transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80" alt="Shower Hair Catcher Drain" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-4">
-                    <p class="text-[10px] uppercase tracking-widest text-digital/80">Bathroom</p>
-                    <h3 class="mt-1 text-base font-semibold text-white leading-snug">Shower Drain Hair Catcher (Pack of 3)</h3>
-                    <p class="mt-2 text-beige/60 text-sm line-clamp-2">Universal fits. No more clogged drains. Washable silicone.</p>
-                    <div class="mt-3 flex items-center justify-between">
-                        <span class="text-lg font-bold text-white">$12.99</span>
-                        <span class="text-[10px] text-beige/40">Buy 3, save more</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Product 5 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5 hover:border-digital/30 transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1583391717772-60b0058e4f3b?w=800&q=80" alt="Electric Rotato Peeler" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-4">
-                    <p class="text-[10px] uppercase tracking-widest text-digital/80">Kitchen</p>
-                    <h3 class="mt-1 text-base font-semibold text-white leading-snug">Electric Rotato Auto Peeler</h3>
-                    <p class="mt-2 text-beige/60 text-sm line-clamp-2">For arthritis and busy kitchens. Peels in seconds.</p>
-                    <div class="mt-3 flex items-center justify-between">
-                        <span class="text-lg font-bold text-white">$39.99</span>
-                        <span class="text-[10px] text-beige/40">Rechargeable</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Product 6 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5 hover:border-digital/30 transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80" alt="Magnetic Wireless iPhone Power Bank" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-4">
-                    <p class="text-[10px] uppercase tracking-widest text-digital/80">Travel</p>
-                    <h3 class="mt-1 text-base font-semibold text-white leading-snug">Magnetic Wireless iPhone Power Bank</h3>
-                    <p class="mt-2 text-beige/60 text-sm line-clamp-2">Snap onto iPhone 12–17. 5,000 mAh, wireless. Never lose battery.</p>
-                    <div class="mt-3 flex items-center justify-between">
-                        <span class="text-lg font-bold text-white">$24.99</span>
-                        <span class="text-[10px] text-beige/40">Magnetic</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Product 7 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5 hover:border-digital/30 transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1554257139-a0347b30ac94?w=800&q=80" alt="Ultrasonic Jewelry Cleaner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-4">
-                    <p class="text-[10px] uppercase tracking-widest text-digital/80">Jewelry</p>
-                    <h3 class="mt-1 text-base font-semibold text-white leading-snug">Ultrasonic Jewelry Cleaner</h3>
-                    <p class="mt-2 text-beige/60 text-sm line-clamp-2">Rings, watches, sunglasses. Restores shine in 5 minutes.</p>
-                    <div class="mt-3 flex items-center justify-between">
-                        <span class="text-lg font-bold text-white">$44.99</span>
-                        <span class="text-[10px] text-beige/40">Timer</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Product 8 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5 hover:border-digital/30 transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1589163720580-6431d35e39f9?w=800&q=80" alt="Shower Water Filter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-4">
-                    <p class="text-[10px] uppercase tracking-widest text-digital/80">Wellness</p>
-                    <h3 class="mt-1 text-base font-semibold text-white leading-snug">Shower Water Filter (Chlorine + Softener)</h3>
-                    <p class="mt-2 text-beige/60 text-sm line-clamp-2">Softer skin and hair. Reduces chlorine for 6+ months.</p>
-                    <div class="mt-3 flex items-center justify-between">
-                        <span class="text-lg font-bold text-white">$39.99</span>
-                        <span class="text-[10px] text-beige/40">2 cartridges</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Product 9 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5 hover:border-digital/30 transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1517509859723-64d0a95e3b9a?w=800&q=80" alt="Magnetic Wireless Car Charger" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-4">
-                    <p class="text-[10px] uppercase tracking-widest text-digital/80">Auto</p>
-                    <h3 class="mt-1 text-base font-semibold text-white leading-snug">Magnetic Wireless Car Mount Charger</h3>
-                    <p class="mt-2 text-beige/60 text-sm line-clamp-2">One-hand mount. Qi wireless charge while you drive.</p>
-                    <div class="mt-3 flex items-center justify-between">
-                        <span class="text-lg font-bold text-white">$34.99</span>
-                        <span class="text-[10px] text-beige/40">Air vent & windshield</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Product 10 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5 hover:border-digital/30 transition-all">
-                <div class="aspect-[4/3] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1541217734817-23131a93b1d8?w=800&q=80" alt="Portable Neck Fan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-4">
-                    <p class="text-[10px] uppercase tracking-widest text-digital/80">Wearables</p>
-                    <h3 class="mt-1 text-base font-semibold text-white leading-snug">Portable Bladeless Neck Fan</h3>
-                    <p class="mt-2 text-beige/60 text-sm line-clamp-2">95° swivel, USB-C fast charge. 8–14 hours of hands-free cooling.</p>
-                    <div class="mt-3 flex items-center justify-between">
-                        <span class="text-lg font-bold text-white">$29.99</span>
-                        <span class="text-[10px] text-beige/40">Whisper quiet</span>
-                    </div>
-                </div>
-            </a>
-
+  <main id="products" class="catalogue">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Top picks</p>
+          <h2>Discover. Buy.<br>Repeat.</h2>
         </div>
-    </main>
+        <p>Ten objects chosen for function first. Prices in USD; shipping and returns follow each supplier's policy.</p>
+      </div>
 
-    <!-- FAQ -->
-    <section id="faq" class="max-w-3xl mx-auto px-4 py-16">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-8">Common Questions</h2>
-        <div class="space-y-4 text-beige/80">
-            <div class="bg-white/[0.03] border border-white/5 rounded-xl p-5">
-                <h3 class="font-semibold text-white">How long does shipping take?</h3>
-                <p class="mt-2">Shipping time and cost are set by the supplier and shown at checkout. Most listings ship internationally.</p>
-            </div>
-            <div class="bg-white/[0.03] border border-white/5 rounded-xl p-5">
-                <h3 class="font-semibold text-white">Can I return a product?</h3>
-                <p class="mt-2">Returns follow the supplier's policy, which is linked on the product page. Message us and we'll help you find the right path.</p>
-            </div>
-            <div class="bg-white/[0.03] border border-white/5 rounded-xl p-5">
-                <h3 class="font-semibold text-white">How do I pay?</h3>
-                <p class="mt-2">You pay on the supplier's checkout page. We don't process payments or store card data.</p>
-            </div>
-            <div class="bg-white/[0.03] border border-white/5 rounded-xl p-5">
-                <h3 class="font-semibold text-white">Is my data safe?</h3>
-                <p class="mt-2">We never see your payment details. The supplier handles the transaction under its own privacy policy.</p>
-            </div>
-        </div>
-    </section>
+      <div class="grid">
+        <a href="https://www.aliexpress.com/item/32999193139.html" target="_blank" rel="noopener noreferrer" class="plate">
+          <div class="plate__img"><img src="https://images.unsplash.com/photo-1590936246509-7277f5c56c75?w=800&q=80" alt="Cordless Pressure Washer Gun"></div>
+          <div class="plate__body"><span class="plate__no">01 / 10</span><p class="plate__cat">Cleaning</p><h3>Cordless Pressure Washer Gun, 1000 PSI</h3><p class="plate__desc">Collapsible, powerful. Perfect for patios, cars and driveways.</p><div class="plate__foot"><span class="plate__price">$59.99</span><span class="plate__meta">Save 30%</span></div></div>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
+          <div class="plate__img"><img src="https://images.unsplash.com/photo-1541275566-8a9e702bafa8?w=800&q=80" alt="LED Star Projector Night Light"></div>
+          <div class="plate__body"><span class="plate__no">02 / 10</span><p class="plate__cat">Home ambience</p><h3>LED Star Projector Night Light</h3><p class="plate__desc">Romantic galaxy night sky for bedrooms and movie nights.</p><div class="plate__foot"><span class="plate__price">$29.99</span><span class="plate__meta">9 modes</span></div></div>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
+          <div class="plate__img"><img src="https://images.unsplash.com/photo-1627728829313-59ffcebc2842?w=800&q=80" alt="Smart Energy-Saving Power Outlet"></div>
+          <div class="plate__body"><span class="plate__no">03 / 10</span><p class="plate__cat">Smart home</p><h3>Smart Energy-Saving Outlet + Timer</h3><p class="plate__desc">Cut standby power. Pays for itself in under a month.</p><div class="plate__foot"><span class="plate__price">$24.99</span><span class="plate__meta">Wi-Fi + schedule</span></div></div>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
+          <div class="plate__img"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80" alt="Shower Hair Catcher Drain"></div>
+          <div class="plate__body"><span class="plate__no">04 / 10</span><p class="plate__cat">Bathroom</p><h3>Shower Drain Hair Catcher (Pack of 3)</h3><p class="plate__desc">Universal fits. No more clogged drains. Washable silicone.</p><div class="plate__foot"><span class="plate__price">$12.99</span><span class="plate__meta">Buy 3, save more</span></div></div>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
+          <div class="plate__img"><img src="https://images.unsplash.com/photo-1583391717772-60b0058e4f3b?w=800&q=80" alt="Electric Rotato Peeler"></div>
+          <div class="plate__body"><span class="plate__no">05 / 10</span><p class="plate__cat">Kitchen</p><h3>Electric Rotato Auto Peeler</h3><p class="plate__desc">For arthritis and busy kitchens. Peels in seconds.</p><div class="plate__foot"><span class="plate__price">$39.99</span><span class="plate__meta">Rechargeable</span></div></div>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
+          <div class="plate__img"><img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80" alt="Magnetic Wireless iPhone Power Bank"></div>
+          <div class="plate__body"><span class="plate__no">06 / 10</span><p class="plate__cat">Travel</p><h3>Magnetic Wireless iPhone Power Bank</h3><p class="plate__desc">Snap onto iPhone 12–17. 5,000 mAh, wireless. Never lose battery.</p><div class="plate__foot"><span class="plate__price">$24.99</span><span class="plate__meta">Magnetic</span></div></div>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
+          <div class="plate__img"><img src="https://images.unsplash.com/photo-1554257139-a0347b30ac94?w=800&q=80" alt="Ultrasonic Jewelry Cleaner"></div>
+          <div class="plate__body"><span class="plate__no">07 / 10</span><p class="plate__cat">Jewelry</p><h3>Ultrasonic Jewelry Cleaner</h3><p class="plate__desc">Rings, watches, sunglasses. Restores shine in 5 minutes.</p><div class="plate__foot"><span class="plate__price">$44.99</span><span class="plate__meta">Timer</span></div></div>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
+          <div class="plate__img"><img src="https://images.unsplash.com/photo-1589163720580-6431d35e39f9?w=800&q=80" alt="Shower Water Filter"></div>
+          <div class="plate__body"><span class="plate__no">08 / 10</span><p class="plate__cat">Wellness</p><h3>Shower Water Filter (Chlorine + Softener)</h3><p class="plate__desc">Softer skin and hair. Reduces chlorine for 6+ months.</p><div class="plate__foot"><span class="plate__price">$39.99</span><span class="plate__meta">2 cartridges</span></div></div>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
+          <div class="plate__img"><img src="https://images.unsplash.com/photo-1517509859723-64d0a95e3b9a?w=800&q=80" alt="Magnetic Wireless Car Charger"></div>
+          <div class="plate__body"><span class="plate__no">09 / 10</span><p class="plate__cat">Auto</p><h3>Magnetic Wireless Car Mount Charger</h3><p class="plate__desc">One-hand mount. Qi wireless charge while you drive.</p><div class="plate__foot"><span class="plate__price">$34.99</span><span class="plate__meta">Air vent &amp; windshield</span></div></div>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
+          <div class="plate__img"><img src="https://images.unsplash.com/photo-1541217734817-23131a93b1d8?w=800&q=80" alt="Portable Neck Fan"></div>
+          <div class="plate__body"><span class="plate__no">10 / 10</span><p class="plate__cat">Wearables</p><h3>Portable Bladeless Neck Fan</h3><p class="plate__desc">95° swivel, USB-C fast charge. 8–14 hours of hands-free cooling.</p><div class="plate__foot"><span class="plate__price">$29.99</span><span class="plate__meta">Whisper quiet</span></div></div>
+        </a>
+      </div>
+    </div>
+  </main>
 
-    <!-- Newsletter / Final CTA -->
-    <section class="max-w-4xl mx-auto px-4 pb-20 text-center">
-        <div class="rounded-3xl border border-white/10 bg-gradient-to-br from-mystic/60 to-charcoal p-8 md:p-12 shadow-2xl">
-            <p class="text-ingenio uppercase tracking-[0.25em] text-[10px] md:text-xs mb-4">There's more than meets the eye</p>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Ask before you buy.</h2>
-            <p class="mt-3 text-beige/80 max-w-lg mx-auto">Tell us what you need it for and we'll say whether a pick fits. No pressure, no scripts.</p>
-            <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer"
-               class="inline-block mt-6 rounded-full bg-digital text-charcoal font-bold px-7 py-3 hover:bg-cyan-400 transition-colors">
-                Message CoolStuff
-            </a>
-        </div>
-    </section>
+  <section id="faq" class="faq">
+    <div class="wrap">
+      <div><p class="eyebrow">Common questions</p><h2>Before you decide.</h2></div>
+      <dl>
+        <div><dt>How long does shipping take?</dt><dd>Shipping time and cost are set by the supplier and shown at checkout. Most listings ship internationally.</dd></div>
+        <div><dt>Can I return a product?</dt><dd>Returns follow the supplier's policy, which is linked on the product page. Message the team for help finding the right path.</dd></div>
+        <div><dt>How do I pay?</dt><dd>You pay on the supplier's checkout page. No payments are processed and no card data is stored here.</dd></div>
+        <div><dt>Is my data safe?</dt><dd>Payment details stay with the supplier, which handles the transaction under its own privacy policy.</dd></div>
+      </dl>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/5 bg-white/[0.02]">
-        <div class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-sm text-beige/60">
-            <div class="flex items-center gap-3">
-                <img src="assets/coolstuff_logo.png" alt="CoolStuff Store" class="h-8 w-8 object-contain">
-                <div>
-                    <p class="text-white font-bold leading-tight">CoolStuff Store</p>
-                    <p class="mt-0.5 text-xs text-beige/40">There's more than meets the eye · Discover, buy, repeat.</p>
-                </div>
-            </div>
-            <div class="flex gap-6">
-                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
-                <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Contact</a>
-            </div>
-        </div>
-    </footer>
+  <section class="closing">
+    <div class="wrap">
+      <div><p>There's more than meets the eye</p><h2>Ask before you buy.</h2></div>
+      <div><p class="note">Tell the team what you need it for and get a straight answer on whether a pick fits. No pressure, no scripts.</p><a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="btn">Message Coolstuff</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p><img src="assets/coolstuff_logo.png" alt="Tienda Coolstuff"><strong>Tienda Coolstuff</strong> · There's more than meets the eye</p>
+      <p><a href="#faq">FAQ</a> · <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer">Contact</a></p>
+    </div>
+  </footer>
 
 </body>
 </html>
