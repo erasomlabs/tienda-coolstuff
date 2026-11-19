@@ -2,7 +2,7 @@
 
 **Productos elegidos para ti, con entrega a domicilio.**
 
-[Visitar la tienda](https://coolstuff-store.netlify.app)
+[Visitar la tienda](https://tienda-coolstuff.netlify.app)
 
 ## Qué es Tienda Coolstuff
 
@@ -26,7 +26,7 @@ Tienda Coolstuff es una tienda en línea donde puedes descubrir productos y real
 
 | Canal | Estado |
 |---|---|
-| Sitio web | [Disponible](https://coolstuff-store.netlify.app) |
+| Sitio web | [Disponible](https://tienda-coolstuff.netlify.app) |
 | Google Play | No publicada en este momento |
 | Aptoide | No publicada en este momento |
 | APK en Releases | Se publicará cuando finalice el proyecto |
