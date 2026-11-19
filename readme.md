@@ -1,17 +1,17 @@
 # Tienda Coolstuff
 
-**Objetos útiles, elegidos por función.**
+**Descubridores de lo oculto. Grandes ofertas.**
 
 [Visitar la tienda](https://tienda-coolstuff.netlify.app)
 
 ## Qué es Tienda Coolstuff
 
-Tienda Coolstuff es un catálogo de afiliados en español con precios referenciales en pesos colombianos (COP). La tienda no cobra ni envía productos: la operación ocurre en AliExpress. El aviso de afiliados aparece en el catálogo.
+Tienda Coolstuff es un catálogo de afiliados en español que encuentra descuentos y cupones para compras en AliExpress, con precios referenciales en pesos colombianos (COP). La tienda no cobra ni envía productos: la operación ocurre en AliExpress. El aviso de afiliados aparece en el catálogo.
 
 ## Estructura de la tienda
 
 - Catálogo único, sin filtros ni categorías visibles.
-- Fichas con imagen, descripción breve, precio de referencia y dato de descuento.
+- Fichas con imagen, descripción breve, precio de referencia, cupón con fecha y dato de descuento.
 - Aviso de afiliados breve.
 - Preguntas frecuentes desplegables.
 - Contacto por Messenger.

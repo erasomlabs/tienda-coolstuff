@@ -5,6 +5,7 @@
 **Mercado objetivo:** Colombia / LatAm hispanohablante  
 **Moneda:** COP  
 **Modelo actual:** afiliado AliExpress con redirección (`/go/<id>`)  
+**Posicionamiento:** descubridores de lo oculto, grandes ofertas. El distintivo es encontrar los mejores descuentos y cupones para compras.  
 **Estado:** 29 productos con enlaces de seguimiento reales (`s.click.aliexpress.com/e/_...`) y 17 cupones con fecha de vencimiento. El PID sigue vacío porque el tracking ya viene incrustado en cada enlace.
 
 ---
@@ -437,11 +438,14 @@ Si quieres que el cliente pague en tu sitio, **no puedes usar el programa de afi
 
 ### Contenido
 
-- [ ] Disclosure de afiliado visible en la ficha y en el footer.
+- [ ] Disclosure de afiliado visible en la ficha y en el footer; breve y sin comisión.
+- [ ] El copy comunica el distintivo: descuentos y cupones ocultos.
+- [ ] No se nombra el total de productos ni se muestran categorías o filtros.
+- [ ] No se mencionan "enlaces" ni "compra final" en el copy general.
 - [ ] No hay claims de "oficial", "garantía propia" ni "envío en 5 días".
 - [ ] Cada producto tiene 3 hooks y 1 guion de 20–35 s.
 - [ ] Cada video tiene CTA al link en bio.
-- [ ] Los cupones están verificados y con fecha.
+- [ ] Los cupones están verificados y con fecha; se validan en el checkout de AliExpress.
 
 ### Legal / fiscal
 
@@ -474,3 +478,5 @@ Hay tres caminos:
 3. **OpenService desde cero:** checkout propio inmediato. Más margen, pero requiere cuenta business, app, pasarela, backend y operación. No es un cambio de botón.
 
 La decisión de producto no se toma en una hoja de cálculo: se toma con 300 clics y 10 ventas reales. El catálogo actual sirve para aprender; la shortlist sirve para apostar.
+
+La dirección de marca es **descubridores de lo oculto, grandes ofertas**. La tienda gana autoridad encontrando descuentos y cupones, no sumando productos: ese es el argumento que debe sostener el copy, las fichas y el contenido para redes.
