@@ -31,9 +31,9 @@ netlify dev        # servidor local + Edge Functions
 - `netlify/edge-functions/go.ts`: redirect de clics y logging.
 - `netlify.toml`: build, headers de seguridad y caché.
 
-## Investigación
+## Publicidad
 
-El análisis de comisiones, categorías, redes y el plan 30/60/90 está en [`docs/investigacion-afiliados-aliexpress-2026.md`](docs/investigacion-afiliados-aliexpress-2026.md). El shortlist histórico está en [`assets/productos-candidatos.json`](assets/productos-candidatos.json).
+El brief con audiencia, productos prioritarios, hooks, lenguaje permitido, llamadas a la acción y métricas está en [`docs/brief-publicidad.md`](docs/brief-publicidad.md).
 
 ## Disponibilidad
 
