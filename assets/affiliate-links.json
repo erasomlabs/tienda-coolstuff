@@ -1,7 +1,57 @@
 {
   "pid": "",
-  "instructions": "Cuando tengas tu PID de AliExpress, pégalo aquí y reemplaza affiliateUrl de cada producto por el enlace de seguimiento generado en Portals. La url de búsqueda se conserva como respaldo.",
+  "instructions": "Cuando tengas tu PID de AliExpress, pégalo aquí y reemplaza affiliateUrl de cada producto por el enlace de seguimiento generado en Portals. Para los productos nuevos, genera el enlace desde la URL directa del artículo; las URL de búsqueda se conservan solo como respaldo de los productos antiguos.",
   "products": {
+    "proyector-hy300": {
+      "title": "Proyector Magcubic HY300 Pro 2026",
+      "url": "https://www.aliexpress.com/item/1005013362909618.html",
+      "affiliateUrl": ""
+    },
+    "aspiradora-mascotas": {
+      "title": "Aspiradora de pelo para mascotas 3 en 1",
+      "url": "https://www.aliexpress.com/item/1005012854240008.html",
+      "affiliateUrl": ""
+    },
+    "masajeador-cuello": {
+      "title": "Masajeador de cuello y hombros recargable",
+      "url": "https://www.aliexpress.com/item/1005013603216779.html",
+      "affiliateUrl": ""
+    },
+    "camara-ptz": {
+      "title": "Cámara PTZ WiFi para exteriores",
+      "url": "https://www.aliexpress.com/item/1005013619130392.html",
+      "affiliateUrl": ""
+    },
+    "kit-estilizador": {
+      "title": "Cepillo rizador iónico 3 en 1",
+      "url": "https://www.aliexpress.com/item/1005007115094712.html",
+      "affiliateUrl": ""
+    },
+    "robot-aspirador": {
+      "title": "Robot aspirador y fregador inteligente",
+      "url": "https://www.aliexpress.com/item/1005013606845201.html",
+      "affiliateUrl": ""
+    },
+    "cepillo-alisador": {
+      "title": "Peine alisador iónico antiescaldado",
+      "url": "https://www.aliexpress.com/item/1005006996293929.html",
+      "affiliateUrl": ""
+    },
+    "aspiradora-carro": {
+      "title": "Aspiradora inalámbrica 120 W para carro",
+      "url": "https://www.aliexpress.com/item/1005012011245009.html",
+      "affiliateUrl": ""
+    },
+    "kit-aseo-mascotas": {
+      "title": "Kit de aseo para mascotas 8 en 1 con secador",
+      "url": "https://www.aliexpress.com/item/1005013364779539.html",
+      "affiliateUrl": ""
+    },
+    "proyector-hy300-4k": {
+      "title": "Proyector KaiAqua 4K Android 11 HY300",
+      "url": "https://www.aliexpress.com/item/1005013625935853.html",
+      "affiliateUrl": ""
+    },
     "limpieza-presion": {
       "title": "Pistola de limpieza a presión inalámbrica",
       "url": "https://www.aliexpress.com/w/wholesale-pressure-washer-gun.html",

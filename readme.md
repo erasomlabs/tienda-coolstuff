@@ -6,7 +6,7 @@
 
 ## Qué es Tienda Coolstuff
 
-Tienda Coolstuff es un catálogo de afiliados en español. Reúne diez productos de distintos nichos —limpieza, hogar, tecnología, cocina, bienestar y auto— con precios referenciales en pesos colombianos (COP).
+Tienda Coolstuff es un catálogo de afiliados en español. Reúne veinte productos de ocho nichos —hogar, tecnología, cocina, bienestar, mascotas, belleza, seguridad y auto— con precios referenciales en pesos colombianos (COP).
 
 La tienda no cobra ni envía productos: la compra, el pago, el envío y las devoluciones ocurren en AliExpress. Si los enlaces de afiliado están activos, Tienda Coolstuff recibe una comisión sin costo adicional para quien compra. El aviso de afiliados aparece en el catálogo y en las preguntas frecuentes.
 
@@ -19,7 +19,7 @@ La tienda no cobra ni envía productos: la compra, el pago, el envío y las devo
 
 ## Estado de los enlaces de afiliado
 
-Los enlaces actuales son **búsquedas verificadas de AliExpress** y todavía no generan comisión. Están centralizados en [`assets/affiliate-links.json`](assets/affiliate-links.json).
+Los enlaces actuales son **URLs verificadas de AliExpress** (fichas de producto para los diez productos nuevos y búsquedas para los diez originales) y todavía no generan comisión. Están centralizados en [`assets/affiliate-links.json`](assets/affiliate-links.json). El inventario investigado está en [`assets/productos-candidatos.json`](assets/productos-candidatos.json) y el análisis en [`docs/investigacion-afiliados-aliexpress-2026.md`](docs/investigacion-afiliados-aliexpress-2026.md).
 
 Para activar las comisiones:
 
