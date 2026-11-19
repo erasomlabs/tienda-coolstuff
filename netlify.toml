@@ -1,0 +1,3 @@
+[build]
+  command = "rm -rf .deploy && mkdir -p .deploy && cp index.html .deploy/ && cp -r assets .deploy/"
+  publish = ".deploy"
