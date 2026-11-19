@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tienda Coolstuff | There's more than meets the eye</title>
-  <meta name="description" content="Curated gadgets, desk tools and design finds that earn their place. Honest picks in USD, shipped by trusted suppliers. There's more than meets the eye.">
-  <meta property="og:title" content="Tienda Coolstuff | There's more than meets the eye">
-  <meta property="og:description" content="Curated gadgets and design finds that earn their place. Clear prices, trusted suppliers, no filler.">
+  <title>Tienda Coolstuff | Hay más de lo que parece</title>
+  <meta name="description" content="Diez objetos útiles para la casa, el trabajo y el día a día. Precios referenciales en COP y compra final en AliExpress. Hay más de lo que parece.">
+  <meta property="og:title" content="Tienda Coolstuff | Hay más de lo que parece">
+  <meta property="og:description" content="Gadgets y objetos útiles, elegidos por función. Precios en COP, enlaces verificados y compra en AliExpress.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tienda-coolstuff.netlify.app">
   <meta property="og:image" content="https://tienda-coolstuff.netlify.app/assets/coolstuff_logo.png">
@@ -14,6 +14,7 @@
   <link rel="icon" href="assets/coolstuff_logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ae-pic-a1.aliexpress-media.com">
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -35,11 +36,10 @@
       -webkit-font-smoothing: antialiased;
     }
     a { color: inherit; }
-    a:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; }
     h1, h2, h3, .display { font-family: "Space Grotesk", system-ui, sans-serif; line-height: 1.05; letter-spacing: -0.03em; margin: 0; }
     .wrap { width: min(74rem, calc(100% - 2.5rem)); margin-inline: auto; }
 
-    /* Masthead */
     .masthead { border-bottom: 1px solid var(--line); background: var(--paper); position: sticky; top: 0; z-index: 40; }
     .masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 4.5rem; }
     .brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
@@ -48,12 +48,11 @@
     .nav { display: flex; align-items: center; gap: 2rem; }
     .nav a { font-size: .9rem; font-weight: 600; text-decoration: none; color: var(--muted); }
     .nav a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: .3em; }
-    .btn { display: inline-block; padding: .7rem 1.4rem; background: var(--signal); color: #fff; font-weight: 700; font-size: .85rem; text-decoration: none; letter-spacing: .01em; }
+    .btn { display: inline-block; padding: .7rem 1.4rem; background: var(--signal); color: #fff; font-weight: 700; font-size: .85rem; text-decoration: none; letter-spacing: .01em; border: 0; cursor: pointer; }
     .btn:hover { background: #d64420; }
     .btn--ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
     .btn--ghost:hover { background: var(--ink); color: var(--paper); }
 
-    /* Hero */
     .hero { padding: clamp(4rem, 11vw, 8.5rem) 0 clamp(3.5rem, 8vw, 6rem); }
     .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); gap: clamp(2rem, 6vw, 5rem); align-items: end; }
     .eyebrow { font-size: .8rem; font-weight: 600; color: var(--signal); letter-spacing: .12em; text-transform: uppercase; margin: 0 0 1.5rem; }
@@ -65,21 +64,31 @@
     .hero__stamp img { width: clamp(6rem, 14vw, 9rem); height: auto; display: block; }
     .hero__stamp p { font-size: .8rem; color: var(--muted); margin: 1rem 0 0; max-width: 14rem; }
 
-    /* Trust row */
     .trust { border-block: 1px solid var(--line); background: var(--plate); }
     .trust ul { list-style: none; margin: 0; padding: 1.1rem 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
     .trust li { font-size: .85rem; font-weight: 600; display: flex; gap: .55rem; align-items: baseline; }
     .trust li::before { content: ""; width: .5rem; height: .5rem; background: var(--signal); flex: none; }
 
-    /* Catalogue */
     .catalogue { padding: clamp(3.5rem, 8vw, 6rem) 0; }
-    .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2rem; }
     .section-head h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; }
-    .section-head p { max-width: 20rem; color: var(--muted); font-size: .9rem; margin: 0; }
+    .section-head p { max-width: 22rem; color: var(--muted); font-size: .9rem; margin: 0; }
+
+    .disclosure { border-left: 4px solid var(--signal); background: var(--plate); padding: 1rem 1.25rem; margin: 0 0 2rem; font-size: .88rem; color: var(--ink); }
+    .disclosure strong { font-weight: 700; }
+    .disclosure a { color: var(--signal); text-underline-offset: .2em; }
+
+    .filters { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.75rem; }
+    .filters button { background: transparent; color: var(--muted); border: 1px solid var(--line); padding: .45rem .9rem; font: inherit; font-size: .82rem; font-weight: 600; }
+    .filters button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+    .filters button:hover { border-color: var(--ink); color: var(--ink); }
+    .filters button[aria-pressed="true"]:hover { color: var(--paper); }
+
     .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
     .plate { background: var(--plate); border-top: 3px solid var(--line); text-decoration: none; display: flex; flex-direction: column; transition: border-color .2s ease; }
+    .plate[hidden] { display: none; }
     .plate:hover { border-top-color: var(--signal); }
-    .plate__img { aspect-ratio: 4 / 3; overflow: hidden; background: #dfe2d8; }
+    .plate__img { aspect-ratio: 1 / 1; overflow: hidden; background: #dfe2d8; }
     .plate__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
     .plate:hover .plate__img img { transform: scale(1.04); }
     .plate__body { padding: 1.1rem 1.1rem 1.25rem; display: flex; flex-direction: column; flex: 1; }
@@ -89,9 +98,10 @@
     .plate__desc { font-size: .85rem; color: var(--muted); margin: .6rem 0 1.1rem; }
     .plate__foot { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; margin-top: auto; border-top: 1px solid var(--line); padding-top: .8rem; }
     .plate__price { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.15rem; }
-    .plate__meta { font-size: .72rem; color: var(--muted); }
+    .plate__meta { font-size: .72rem; color: var(--muted); text-align: right; }
+    .catalogue__note { font-size: .78rem; color: var(--muted); margin: 1.5rem 0 0; }
+    .empty { display: none; padding: 2rem; border: 1px dashed var(--line); color: var(--muted); font-size: .9rem; }
 
-    /* FAQ */
     .faq { border-top: 1px solid var(--line); padding: clamp(3.5rem, 8vw, 6rem) 0; }
     .faq .wrap { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: clamp(2rem, 6vw, 5rem); }
     .faq h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
@@ -101,7 +111,6 @@
     .faq dt { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 1.1rem; }
     .faq dd { margin: .5rem 0 0; color: var(--muted); font-size: .95rem; max-width: 38rem; }
 
-    /* Closing */
     .closing { background: var(--ink); color: var(--paper); padding: clamp(3rem, 7vw, 5rem) 0; }
     .closing .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; }
     .closing p { margin: 0; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--signal); }
@@ -128,35 +137,155 @@
     @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Selección Tienda Coolstuff",
+    "url": "https://tienda-coolstuff.netlify.app/#catalogo",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Product",
+          "name": "Pistola de limpieza a presión inalámbrica",
+          "image": "https://ae-pic-a1.aliexpress-media.com/kf/S78e1cac8fc094d268d6aa4bb5c3bca89z.jpg_480x480q75.jpg",
+          "url": "https://tienda-coolstuff.netlify.app/go/limpieza-presion",
+          "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "229000", "availability": "https://schema.org/InStock" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Product",
+          "name": "Ventilador portátil de cuello sin aspas",
+          "image": "https://ae-pic-a1.aliexpress-media.com/kf/S181474ba4c434124b0f1ec617bd4f9eeh.jpg_480x480q75.jpg",
+          "url": "https://tienda-coolstuff.netlify.app/go/ventilador-cuello",
+          "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "89000", "availability": "https://schema.org/InStock" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Product",
+          "name": "Teclado mecánico compacto retroiluminado",
+          "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sab17970e27994a6b8ec94a0a3bae1847v.jpg_480x480q75.jpg",
+          "url": "https://tienda-coolstuff.netlify.app/go/teclado-mecanico",
+          "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "159000", "availability": "https://schema.org/InStock" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Product",
+          "name": "Lámpara de escritorio LED regulable",
+          "image": "https://ae-pic-a1.aliexpress-media.com/kf/S804b975fde1a45a287d6b1e20b7ddaffC.jpg_480x480q75.jpg",
+          "url": "https://tienda-coolstuff.netlify.app/go/lampara-escritorio",
+          "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "79000", "availability": "https://schema.org/InStock" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Product",
+          "name": "Reloj inteligente con monitor de actividad",
+          "image": "https://ae-pic-a1.aliexpress-media.com/kf/S3d00dd491292421cbbedc383b1b0be39L.jpg_480x480q75.jpg",
+          "url": "https://tienda-coolstuff.netlify.app/go/reloj-inteligente",
+          "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "119000", "availability": "https://schema.org/InStock" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "Product",
+          "name": "Soporte magnético para teléfono",
+          "image": "https://ae-pic-a1.aliexpress-media.com/kf/S45375edaf9424d4593fd0d8ef36e177ft.jpg_480x480q75.jpg",
+          "url": "https://tienda-coolstuff.netlify.app/go/soporte-movil",
+          "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "45000", "availability": "https://schema.org/InStock" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@type": "Product",
+          "name": "Pelador eléctrico automático de frutas y verduras",
+          "image": "https://ae-pic-a1.aliexpress-media.com/kf/Ac8d0934d22e44e65a48926f24b1a74682.jpg_480x480q75.jpg",
+          "url": "https://tienda-coolstuff.netlify.app/go/pelador-electrico",
+          "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "139000", "availability": "https://schema.org/InStock" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "item": {
+          "@type": "Product",
+          "name": "Limpiador ultrasónico de joyas y gafas",
+          "image": "https://ae-pic-a1.aliexpress-media.com/kf/S634b11946b8f4d5e819064a44775cc94A.jpg_480x480q75.jpg",
+          "url": "https://tienda-coolstuff.netlify.app/go/limpiador-joyas",
+          "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "99000", "availability": "https://schema.org/InStock" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 9,
+        "item": {
+          "@type": "Product",
+          "name": "Filtro de ducha con cartucho reemplazable",
+          "image": "https://ae-pic-a1.aliexpress-media.com/kf/S3975b3145d7e4f4eb473602f048ea8aeV.jpg_480x480q75.jpg",
+          "url": "https://tienda-coolstuff.netlify.app/go/filtro-ducha",
+          "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "69000", "availability": "https://schema.org/InStock" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 10,
+        "item": {
+          "@type": "Product",
+          "name": "Cargador inalámbrico magnético para auto",
+          "image": "https://ae-pic-a1.aliexpress-media.com/kf/S7a17dbb0a2274eab927b310550ac7cc1B.jpg_480x480q75.jpg",
+          "url": "https://tienda-coolstuff.netlify.app/go/cargador-auto",
+          "offers": { "@type": "Offer", "priceCurrency": "COP", "price": "79000", "availability": "https://schema.org/InStock" }
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
   <header class="masthead">
     <div class="wrap">
-      <a href="#" class="brand"><img src="assets/coolstuff_logo.png" alt="Tienda Coolstuff logo"><span>Tienda Coolstuff</span></a>
-      <nav class="nav" aria-label="Principal">
-        <a href="#products">Discover</a>
-        <a href="#faq">FAQ</a>
-        <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer">Contact</a>
+      <a href="#inicio" class="brand"><img src="assets/coolstuff_logo.png" alt="Logo de Tienda Coolstuff"><span>Tienda Coolstuff</span></a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer">Contacto</a>
       </nav>
       <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="btn">Messenger</a>
     </div>
   </header>
 
-  <section class="hero">
+  <section class="hero" id="inicio">
     <div class="wrap">
       <div>
-        <p class="eyebrow">There's more than meets the eye</p>
+        <p class="eyebrow">Hay más de lo que parece</p>
         <h1>Tienda<br><em>Coolstuff.</em></h1>
-        <p class="lede">Objects where ingenuity, design and function meet. Each pick is chosen for one reason: it works better than the obvious alternative.</p>
+        <p class="lede">Objetos donde la ingeniería, el diseño y la utilidad se encuentran. Cada elección tiene una razón: funciona mejor que la alternativa obvia.</p>
         <div class="hero__actions">
-          <a href="#products" class="btn">See the picks</a>
-          <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">Ask a question</a>
+          <a href="#catalogo" class="btn">Ver los 10 elegidos</a>
+          <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">Hacer una pregunta</a>
         </div>
       </div>
       <div class="hero__stamp">
-        <img src="assets/coolstuff_logo.png" alt="Tienda Coolstuff logo">
-        <p>Curated objects, plain descriptions, no filler.</p>
+        <img src="assets/coolstuff_logo.png" alt="Logo de Tienda Coolstuff">
+        <p>Objetos elegidos, descripciones claras, sin relleno.</p>
       </div>
     </div>
   </section>
@@ -164,94 +293,133 @@
   <div class="trust">
     <div class="wrap">
       <ul>
-        <li>Prices in USD</li>
-        <li>Vetted suppliers</li>
-        <li>Checkout at the supplier</li>
-        <li>Questions answered by a person</li>
+        <li>Precios referenciales en COP</li>
+        <li>Enlaces verificados</li>
+        <li>Compra final en AliExpress</li>
+        <li>Dudas respondidas por una persona</li>
       </ul>
     </div>
   </div>
 
-  <main id="products" class="catalogue">
+  <main id="catalogo" class="catalogue">
     <div class="wrap">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Top picks</p>
-          <h2>Discover. Buy.<br>Repeat.</h2>
+          <p class="eyebrow">Selección actual</p>
+          <h2>Descubre.<br>Elige. Prueba.</h2>
         </div>
-        <p>Ten objects chosen for function first. Prices in USD; shipping and returns follow each supplier's policy.</p>
+        <p>Diez objetos elegidos por función primero. Precios referenciales en COP; el precio final, el envío y las devoluciones los define AliExpress.</p>
       </div>
 
-      <div class="grid">
-        <a href="https://www.aliexpress.com/item/32999193139.html" target="_blank" rel="noopener noreferrer" class="plate">
-          <div class="plate__img"><img src="https://images.unsplash.com/photo-1590936246509-7277f5c56c75?w=800&q=80" alt="Cordless Pressure Washer Gun"></div>
-          <div class="plate__body"><span class="plate__no">01 / 10</span><p class="plate__cat">Cleaning</p><h3>Cordless Pressure Washer Gun, 1000 PSI</h3><p class="plate__desc">Collapsible, powerful. Perfect for patios, cars and driveways.</p><div class="plate__foot"><span class="plate__price">$59.99</span><span class="plate__meta">Save 30%</span></div></div>
+      <aside class="disclosure" aria-label="Aviso de afiliados">
+        <strong>Aviso de afiliados:</strong> los enlaces de este catálogo llevan a AliExpress. Si compras desde ellos, Tienda Coolstuff puede recibir una comisión sin costo adicional para ti. <a href="#preguntas">Cómo funciona</a>.
+      </aside>
+
+      <nav class="filters" aria-label="Filtrar productos por categoría">
+        <button type="button" data-filter="todo" aria-pressed="true">Todos</button>
+        <button type="button" data-filter="hogar" aria-pressed="false">Hogar</button>
+        <button type="button" data-filter="tecnologia" aria-pressed="false">Tecnología</button>
+        <button type="button" data-filter="cocina" aria-pressed="false">Cocina</button>
+        <button type="button" data-filter="bienestar" aria-pressed="false">Bienestar</button>
+        <button type="button" data-filter="auto" aria-pressed="false">Auto</button>
+      </nav>
+
+      <div class="grid" id="product-grid">
+        <a href="/go/limpieza-presion" data-category="hogar" class="plate" rel="sponsored nofollow" aria-label="Ver Pistola de limpieza a presión inalámbrica en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S78e1cac8fc094d268d6aa4bb5c3bca89z.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Pistola de limpieza a presión inalámbrica"></div>
+          <div class="plate__body"><span class="plate__no">01 / 10</span><p class="plate__cat">Limpieza</p><h3>Pistola de limpieza a presión inalámbrica</h3><p class="plate__desc">Compacta y sin cable. Para patios, vehículos y superficies difíciles.</p><div class="plate__foot"><span class="plate__price">$229.000</span><span class="plate__meta">COP · referencial</span></div></div>
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
-          <div class="plate__img"><img src="https://images.unsplash.com/photo-1541275566-8a9e702bafa8?w=800&q=80" alt="LED Star Projector Night Light"></div>
-          <div class="plate__body"><span class="plate__no">02 / 10</span><p class="plate__cat">Home ambience</p><h3>LED Star Projector Night Light</h3><p class="plate__desc">Romantic galaxy night sky for bedrooms and movie nights.</p><div class="plate__foot"><span class="plate__price">$29.99</span><span class="plate__meta">9 modes</span></div></div>
+        <a href="/go/ventilador-cuello" data-category="bienestar" class="plate" rel="sponsored nofollow" aria-label="Ver Ventilador portátil de cuello sin aspas en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S181474ba4c434124b0f1ec617bd4f9eeh.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Ventilador portátil de cuello sin aspas"></div>
+          <div class="plate__body"><span class="plate__no">02 / 10</span><p class="plate__cat">Bienestar</p><h3>Ventilador portátil de cuello sin aspas</h3><p class="plate__desc">Flujo de aire constante y manos libres. Se carga por USB-C.</p><div class="plate__foot"><span class="plate__price">$89.000</span><span class="plate__meta">COP · referencial</span></div></div>
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
-          <div class="plate__img"><img src="https://images.unsplash.com/photo-1627728829313-59ffcebc2842?w=800&q=80" alt="Smart Energy-Saving Power Outlet"></div>
-          <div class="plate__body"><span class="plate__no">03 / 10</span><p class="plate__cat">Smart home</p><h3>Smart Energy-Saving Outlet + Timer</h3><p class="plate__desc">Cut standby power. Pays for itself in under a month.</p><div class="plate__foot"><span class="plate__price">$24.99</span><span class="plate__meta">Wi-Fi + schedule</span></div></div>
+        <a href="/go/teclado-mecanico" data-category="tecnologia" class="plate" rel="sponsored nofollow" aria-label="Ver Teclado mecánico compacto retroiluminado en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sab17970e27994a6b8ec94a0a3bae1847v.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Teclado mecánico compacto retroiluminado"></div>
+          <div class="plate__body"><span class="plate__no">03 / 10</span><p class="plate__cat">Tecnología</p><h3>Teclado mecánico compacto retroiluminado</h3><p class="plate__desc">Respuesta táctil, tamaño reducido y luz para trabajar de noche.</p><div class="plate__foot"><span class="plate__price">$159.000</span><span class="plate__meta">COP · referencial</span></div></div>
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
-          <div class="plate__img"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80" alt="Shower Hair Catcher Drain"></div>
-          <div class="plate__body"><span class="plate__no">04 / 10</span><p class="plate__cat">Bathroom</p><h3>Shower Drain Hair Catcher (Pack of 3)</h3><p class="plate__desc">Universal fits. No more clogged drains. Washable silicone.</p><div class="plate__foot"><span class="plate__price">$12.99</span><span class="plate__meta">Buy 3, save more</span></div></div>
+        <a href="/go/lampara-escritorio" data-category="hogar" class="plate" rel="sponsored nofollow" aria-label="Ver Lámpara de escritorio LED regulable en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S804b975fde1a45a287d6b1e20b7ddaffC.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Lámpara de escritorio LED regulable"></div>
+          <div class="plate__body"><span class="plate__no">04 / 10</span><p class="plate__cat">Hogar</p><h3>Lámpara de escritorio LED regulable</h3><p class="plate__desc">Brazo articulado, intensidad ajustable y menos fatiga visual.</p><div class="plate__foot"><span class="plate__price">$79.000</span><span class="plate__meta">COP · referencial</span></div></div>
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
-          <div class="plate__img"><img src="https://images.unsplash.com/photo-1583391717772-60b0058e4f3b?w=800&q=80" alt="Electric Rotato Peeler"></div>
-          <div class="plate__body"><span class="plate__no">05 / 10</span><p class="plate__cat">Kitchen</p><h3>Electric Rotato Auto Peeler</h3><p class="plate__desc">For arthritis and busy kitchens. Peels in seconds.</p><div class="plate__foot"><span class="plate__price">$39.99</span><span class="plate__meta">Rechargeable</span></div></div>
+        <a href="/go/reloj-inteligente" data-category="tecnologia" class="plate" rel="sponsored nofollow" aria-label="Ver Reloj inteligente con monitor de actividad en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S3d00dd491292421cbbedc383b1b0be39L.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Reloj inteligente con monitor de actividad"></div>
+          <div class="plate__body"><span class="plate__no">05 / 10</span><p class="plate__cat">Tecnología</p><h3>Reloj inteligente con monitor de actividad</h3><p class="plate__desc">Pasos, frecuencia cardíaca y notificaciones en la muñeca.</p><div class="plate__foot"><span class="plate__price">$119.000</span><span class="plate__meta">COP · referencial</span></div></div>
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
-          <div class="plate__img"><img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80" alt="Magnetic Wireless iPhone Power Bank"></div>
-          <div class="plate__body"><span class="plate__no">06 / 10</span><p class="plate__cat">Travel</p><h3>Magnetic Wireless iPhone Power Bank</h3><p class="plate__desc">Snap onto iPhone 12–17. 5,000 mAh, wireless. Never lose battery.</p><div class="plate__foot"><span class="plate__price">$24.99</span><span class="plate__meta">Magnetic</span></div></div>
+        <a href="/go/soporte-movil" data-category="tecnologia" class="plate" rel="sponsored nofollow" aria-label="Ver Soporte magnético para teléfono en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S45375edaf9424d4593fd0d8ef36e177ft.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Soporte magnético para teléfono"></div>
+          <div class="plate__body"><span class="plate__no">06 / 10</span><p class="plate__cat">Accesorios</p><h3>Soporte magnético para teléfono</h3><p class="plate__desc">Fijación firme para escritorio, coche o cocina. Ajuste de ángulo.</p><div class="plate__foot"><span class="plate__price">$45.000</span><span class="plate__meta">COP · referencial</span></div></div>
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
-          <div class="plate__img"><img src="https://images.unsplash.com/photo-1554257139-a0347b30ac94?w=800&q=80" alt="Ultrasonic Jewelry Cleaner"></div>
-          <div class="plate__body"><span class="plate__no">07 / 10</span><p class="plate__cat">Jewelry</p><h3>Ultrasonic Jewelry Cleaner</h3><p class="plate__desc">Rings, watches, sunglasses. Restores shine in 5 minutes.</p><div class="plate__foot"><span class="plate__price">$44.99</span><span class="plate__meta">Timer</span></div></div>
+        <a href="/go/pelador-electrico" data-category="cocina" class="plate" rel="sponsored nofollow" aria-label="Ver Pelador eléctrico automático de frutas y verduras en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Ac8d0934d22e44e65a48926f24b1a74682.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Pelador eléctrico automático de frutas y verduras"></div>
+          <div class="plate__body"><span class="plate__no">07 / 10</span><p class="plate__cat">Cocina</p><h3>Pelador eléctrico automático de frutas y verduras</h3><p class="plate__desc">Recargable y rápido. Útil cuando cortar a mano se vuelve tedioso.</p><div class="plate__foot"><span class="plate__price">$139.000</span><span class="plate__meta">COP · referencial</span></div></div>
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
-          <div class="plate__img"><img src="https://images.unsplash.com/photo-1589163720580-6431d35e39f9?w=800&q=80" alt="Shower Water Filter"></div>
-          <div class="plate__body"><span class="plate__no">08 / 10</span><p class="plate__cat">Wellness</p><h3>Shower Water Filter (Chlorine + Softener)</h3><p class="plate__desc">Softer skin and hair. Reduces chlorine for 6+ months.</p><div class="plate__foot"><span class="plate__price">$39.99</span><span class="plate__meta">2 cartridges</span></div></div>
+        <a href="/go/limpiador-joyas" data-category="hogar" class="plate" rel="sponsored nofollow" aria-label="Ver Limpiador ultrasónico de joyas y gafas en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S634b11946b8f4d5e819064a44775cc94A.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Limpiador ultrasónico de joyas y gafas"></div>
+          <div class="plate__body"><span class="plate__no">08 / 10</span><p class="plate__cat">Cuidado</p><h3>Limpiador ultrasónico de joyas y gafas</h3><p class="plate__desc">Anillos, relojes y lentes. Recupera el brillo en minutos.</p><div class="plate__foot"><span class="plate__price">$99.000</span><span class="plate__meta">COP · referencial</span></div></div>
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
-          <div class="plate__img"><img src="https://images.unsplash.com/photo-1517509859723-64d0a95e3b9a?w=800&q=80" alt="Magnetic Wireless Car Charger"></div>
-          <div class="plate__body"><span class="plate__no">09 / 10</span><p class="plate__cat">Auto</p><h3>Magnetic Wireless Car Mount Charger</h3><p class="plate__desc">One-hand mount. Qi wireless charge while you drive.</p><div class="plate__foot"><span class="plate__price">$34.99</span><span class="plate__meta">Air vent &amp; windshield</span></div></div>
+        <a href="/go/filtro-ducha" data-category="bienestar" class="plate" rel="sponsored nofollow" aria-label="Ver Filtro de ducha con cartucho reemplazable en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S3975b3145d7e4f4eb473602f048ea8aeV.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Filtro de ducha con cartucho reemplazable"></div>
+          <div class="plate__body"><span class="plate__no">09 / 10</span><p class="plate__cat">Bienestar</p><h3>Filtro de ducha con cartucho reemplazable</h3><p class="plate__desc">Reduce cloro y sedimentos. Piel y cabello con menos sequedad.</p><div class="plate__foot"><span class="plate__price">$69.000</span><span class="plate__meta">COP · referencial</span></div></div>
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="plate">
-          <div class="plate__img"><img src="https://images.unsplash.com/photo-1541217734817-23131a93b1d8?w=800&q=80" alt="Portable Neck Fan"></div>
-          <div class="plate__body"><span class="plate__no">10 / 10</span><p class="plate__cat">Wearables</p><h3>Portable Bladeless Neck Fan</h3><p class="plate__desc">95° swivel, USB-C fast charge. 8–14 hours of hands-free cooling.</p><div class="plate__foot"><span class="plate__price">$29.99</span><span class="plate__meta">Whisper quiet</span></div></div>
+        <a href="/go/cargador-auto" data-category="auto" class="plate" rel="sponsored nofollow" aria-label="Ver Cargador inalámbrico magnético para auto en AliExpress">
+          <div class="plate__img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S7a17dbb0a2274eab927b310550ac7cc1B.jpg_480x480q75.jpg" width="480" height="480" loading="lazy" decoding="async" alt="Cargador inalámbrico magnético para auto"></div>
+          <div class="plate__body"><span class="plate__no">10 / 10</span><p class="plate__cat">Auto</p><h3>Cargador inalámbrico magnético para auto</h3><p class="plate__desc">Soporte y carga Qi en un solo gesto. Para rejilla o parabrisas.</p><div class="plate__foot"><span class="plate__price">$79.000</span><span class="plate__meta">COP · referencial</span></div></div>
         </a>
       </div>
+
+      <p class="empty" id="empty-state" role="status">No hay productos en esta categoría.</p>
+      <p class="catalogue__note">Los precios son referenciales en pesos colombianos y pueden variar según vendedor, promociones y tasa de cambio. El valor final se muestra en AliExpress antes de pagar.</p>
     </div>
   </main>
 
-  <section id="faq" class="faq">
+  <section id="preguntas" class="faq">
     <div class="wrap">
-      <div><p class="eyebrow">Common questions</p><h2>Before you decide.</h2></div>
+      <div><p class="eyebrow">Preguntas frecuentes</p><h2>Antes de decidir.</h2></div>
       <dl>
-        <div><dt>How long does shipping take?</dt><dd>Shipping time and cost are set by the supplier and shown at checkout. Most listings ship internationally.</dd></div>
-        <div><dt>Can I return a product?</dt><dd>Returns follow the supplier's policy, which is linked on the product page. Message the team for help finding the right path.</dd></div>
-        <div><dt>How do I pay?</dt><dd>You pay on the supplier's checkout page. No payments are processed and no card data is stored here.</dd></div>
-        <div><dt>Is my data safe?</dt><dd>Payment details stay with the supplier, which handles the transaction under its own privacy policy.</dd></div>
+        <div><dt>¿Cuánto tarda el envío?</dt><dd>El tiempo y el costo los define AliExpress y se muestran al finalizar la compra. La mayoría de las publicaciones envían internacionalmente a Colombia.</dd></div>
+        <div><dt>¿Puedo devolver un producto?</dt><dd>Las devoluciones siguen la política del vendedor en AliExpress, indicada en cada publicación. Escríbenos si necesitas ayuda para encontrarla.</dd></div>
+        <div><dt>¿Dónde pago?</dt><dd>Pagas en la página de AliExpress. Aquí no procesamos pagos ni guardamos datos de tarjeta.</dd></div>
+        <div><dt>¿Cómo gana dinero Tienda Coolstuff?</dt><dd>Usamos enlaces de afiliado de AliExpress. Si compras desde ellos, recibimos una comisión sin costo adicional para ti. Esos enlaces se identifican como patrocinados.</dd></div>
+        <div><dt>¿Los precios son finales?</dt><dd>No. Son referenciales en COP y pueden cambiar según vendedor, promociones y tasa de cambio. El precio final aparece en AliExpress.</dd></div>
       </dl>
     </div>
   </section>
 
   <section class="closing">
     <div class="wrap">
-      <div><p>There's more than meets the eye</p><h2>Ask before you buy.</h2></div>
-      <div><p class="note">Tell the team what you need it for and get a straight answer on whether a pick fits. No pressure, no scripts.</p><a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="btn">Message Coolstuff</a></div>
+      <div><p>Hay más de lo que parece</p><h2>Pregunta antes de comprar.</h2></div>
+      <div><p class="note">Cuéntanos para qué lo necesitas y te decimos con franqueza si la elección encaja. Sin presión ni guiones.</p><a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer" class="btn">Escribir a Coolstuff</a></div>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
-      <p><img src="assets/coolstuff_logo.png" alt="Tienda Coolstuff"><strong>Tienda Coolstuff</strong> · There's more than meets the eye</p>
-      <p><a href="#faq">FAQ</a> · <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer">Contact</a></p>
+      <p><img src="assets/coolstuff_logo.png" alt="Logo de Tienda Coolstuff"><strong>Tienda Coolstuff</strong> · Afiliados de AliExpress</p>
+      <p><a href="#preguntas">Preguntas</a> · <a href="https://www.facebook.com/tienda.coolstuff/" target="_blank" rel="noopener noreferrer">Contacto</a></p>
     </div>
   </footer>
 
+  <script>
+    (() => {
+      const buttons = document.querySelectorAll(".filters button");
+      const cards = Array.from(document.querySelectorAll("#product-grid .plate"));
+      const empty = document.getElementById("empty-state");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter;
+          let visible = 0;
+
+          buttons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+          cards.forEach((card) => {
+            const show = filter === "todo" || card.dataset.category === filter;
+            card.hidden = !show;
+            if (show) visible += 1;
+          });
+          empty.style.display = visible === 0 ? "block" : "none";
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

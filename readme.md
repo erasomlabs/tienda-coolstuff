@@ -1,26 +1,46 @@
 # Tienda Coolstuff
 
-**Productos elegidos para ti, con entrega a domicilio.**
+**Objetos útiles, elegidos por función. Compra final en AliExpress.**
 
 [Visitar la tienda](https://tienda-coolstuff.netlify.app)
 
 ## Qué es Tienda Coolstuff
 
-Tienda Coolstuff es una tienda en línea donde puedes descubrir productos y realizar tus compras desde el móvil o la computadora. La experiencia está pensada para ser directa: explorar, elegir y recibir lo que te gusta en casa.
+Tienda Coolstuff es un catálogo de afiliados en español. Reúne diez productos de distintos nichos —limpieza, hogar, tecnología, cocina, bienestar y auto— con precios referenciales en pesos colombianos (COP).
 
-## Lo que puedes hacer
+La tienda no cobra ni envía productos: la compra, el pago, el envío y las devoluciones ocurren en AliExpress. Si los enlaces de afiliado están activos, Tienda Coolstuff recibe una comisión sin costo adicional para quien compra. El aviso de afiliados aparece en el catálogo y en las preguntas frecuentes.
 
-- Explorar el catálogo de productos disponibles.
-- Elegir artículos y preparar tu compra desde la tienda.
-- Recibir tus pedidos en domicilio.
-- Acceder a la tienda desde cualquier navegador.
+## Cómo funciona
 
-## Por qué elegirla
+1. Exploras el catálogo y filtras por categoría.
+2. Al elegir un producto, el enlace pasa por `/go/<id>`.
+3. Una Edge Function registra el clic y redirige con `302` a AliExpress.
+4. El precio final, el envío y la garantía se confirman en AliExpress antes de pagar.
 
-- **Fácil de usar:** navegación sencilla y compra directa.
-- **Cómoda:** compra sin necesidad de instalar una app.
-- **Accesible:** disponible desde móvil y computadora.
-- **Enfoque claro:** solo productos y compra, sin pasos innecesarios.
+## Estado de los enlaces de afiliado
+
+Los enlaces actuales son **búsquedas verificadas de AliExpress** y todavía no generan comisión. Están centralizados en [`assets/affiliate-links.json`](assets/affiliate-links.json).
+
+Para activar las comisiones:
+
+1. Obtén tu PID en [AliExpress Portals](https://portals.aliexpress.com/).
+2. Pega el valor en el campo `pid` del JSON.
+3. Reemplaza `affiliateUrl` de cada producto por el enlace de seguimiento generado en Portals. El campo `url` se conserva como respaldo.
+4. Ejecuta `node build.mjs` y haz deploy.
+
+La Edge Function usa `affiliateUrl` cuando existe y cae a `url` si está vacío, así que el catálogo nunca queda con enlaces rotos.
+
+## Desarrollo
+
+```bash
+node build.mjs     # genera .deploy/
+netlify dev        # servidor local + Edge Functions
+```
+
+- `index.html`: catálogo estático en español, filtros y JSON-LD `ItemList`.
+- `assets/affiliate-links.json`: fuente única de URLs de destino.
+- `netlify/edge-functions/go.ts`: redirect de clics y logging.
+- `netlify.toml`: build, headers de seguridad y caché.
 
 ## Disponibilidad
 

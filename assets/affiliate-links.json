@@ -1,0 +1,56 @@
+{
+  "pid": "",
+  "instructions": "Cuando tengas tu PID de AliExpress, pégalo aquí y reemplaza affiliateUrl de cada producto por el enlace de seguimiento generado en Portals. La url de búsqueda se conserva como respaldo.",
+  "products": {
+    "limpieza-presion": {
+      "title": "Pistola de limpieza a presión inalámbrica",
+      "url": "https://www.aliexpress.com/w/wholesale-pressure-washer-gun.html",
+      "affiliateUrl": ""
+    },
+    "ventilador-cuello": {
+      "title": "Ventilador portátil de cuello sin aspas",
+      "url": "https://www.aliexpress.com/w/wholesale-neck-fan.html",
+      "affiliateUrl": ""
+    },
+    "teclado-mecanico": {
+      "title": "Teclado mecánico compacto retroiluminado",
+      "url": "https://www.aliexpress.com/w/wholesale-mechanical-keyboard.html",
+      "affiliateUrl": ""
+    },
+    "lampara-escritorio": {
+      "title": "Lámpara de escritorio LED regulable",
+      "url": "https://www.aliexpress.com/w/wholesale-desk-lamp.html",
+      "affiliateUrl": ""
+    },
+    "reloj-inteligente": {
+      "title": "Reloj inteligente con monitor de actividad",
+      "url": "https://www.aliexpress.com/w/wholesale-smart-watch.html",
+      "affiliateUrl": ""
+    },
+    "soporte-movil": {
+      "title": "Soporte magnético para teléfono",
+      "url": "https://www.aliexpress.com/w/wholesale-phone-holder.html",
+      "affiliateUrl": ""
+    },
+    "pelador-electrico": {
+      "title": "Pelador eléctrico automático de frutas y verduras",
+      "url": "https://www.aliexpress.com/w/wholesale-electric-peeler.html",
+      "affiliateUrl": ""
+    },
+    "limpiador-joyas": {
+      "title": "Limpiador ultrasónico de joyas y gafas",
+      "url": "https://www.aliexpress.com/w/wholesale-jewelry-cleaner.html",
+      "affiliateUrl": ""
+    },
+    "filtro-ducha": {
+      "title": "Filtro de ducha con cartucho reemplazable",
+      "url": "https://www.aliexpress.com/w/wholesale-shower-filter.html",
+      "affiliateUrl": ""
+    },
+    "cargador-auto": {
+      "title": "Cargador inalámbrico magnético para auto",
+      "url": "https://www.aliexpress.com/w/wholesale-car-charger.html",
+      "affiliateUrl": ""
+    }
+  }
+}
